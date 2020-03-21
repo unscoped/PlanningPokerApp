@@ -1,0 +1,42 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "expo": "~36.0.0",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-screens": "2.0.0-alpha.12",
+    "react-native-web": "~0.11.7"
+  },
+  "devDependencies": {
+    "@types/react": "~16.9.0",
+    "@types/react-native": "~0.60.23",
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "~8.0.0",
+    "typescript": "^3.8.3",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-import": "2.20.0",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-only-warn": "1.0.2",
+    "eslint-plugin-prefer-arrow": "1.1.7",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-react-hooks": "2.3.0",
+    "eslint-plugin-react-native": "3.8.1",
+    "eslint-plugin-standard": "4.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0"
+  },
+  "private": true
+}

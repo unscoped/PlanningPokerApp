@@ -1,0 +1,49 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "license": "none",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production ts-node --transpile-only src/server.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --watch src --delay 1 --exec 'ts-node' src/server.ts",
+    "test": "jest --forceExit --detectOpenHandles",
+    "lint": "tslint -p tsconfig.json -c tslint.json"
+  },
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "envalid": "^6.0.1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.3",
+    "hpp": "^0.2.3",
+    "jest": "^25.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.7.0",
+    "typescript": "^3.8.3",
+    "ws": "^7.2.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.3",
+    "@types/helmet": "0.0.45",
+    "@types/hpp": "^0.2.1",
+    "@types/jest": "^25.1.4",
+    "@types/jsonwebtoken": "^8.3.8",
+    "@types/morgan": "^1.9.0",
+    "@types/node": "^13.9.2",
+    "@types/supertest": "^2.0.8",
+    "@types/ws": "^7.2.3",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2",
+    "tslint": "^6.1.0",
+    "tslint-config-airbnb": "^5.11.2"
+  }
+}

@@ -35,32 +35,33 @@ const updateRoom = (roomId: string) => {
 }
 
 wss.on('connection', (ws: WebSocket) => {
-
-    //connection is up, let's add a simple simple event
-    ws.on('message', (message: string) => {
-      //log the received message and send it back to the client
-      console.log('received: %s', message);
-
-      try {
-        const msg: Message = JSON.parse(message)
-        switch(msg.type) {
-          case MessageType.JoinRequest: {
-            const newUserId = new Uuid(4).format()
+  const userId = new Uuid(4).format()
+  
+  //connection is up, let's add a simple simple event
+  ws.on('message', (message: string) => {
+    //log the received message and send it back to the client
+    console.log('received: %s', message);
+    
+    try {
+      const msg: Message = JSON.parse(message)
+      switch(msg.type) {
+        case MessageType.JoinRequest: {
             rooms[msg.roomId].users.push({
-              id: newUserId,
+              id: userId,
               userName: msg.payload.name,
               voteValue: undefined,
             })
-            users[newUserId] = ws;
+            users[userId] = ws;
             
             updateRoom(msg.roomId);
 
             break;
           }
-          // case MessageType.LeaveRequest: {
-          //   rooms[msg.roomId].users
-          //   break;
-          // }
+          case MessageType.LeaveRequest: {
+            rooms[msg.roomId].users = rooms[msg.roomId].users.filter(user => user.id !== userId)
+
+            break;
+          }
         }
       } catch {
         ws.send("Invalid message");

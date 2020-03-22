@@ -30,7 +30,7 @@ const updateRoom = (roomId: string) => {
   }
 
   Object.values(room.users).forEach((user) => {
-    users[user.id].send(msg)
+    users[user.id].send(JSON.stringify(msg))
   })
 }
 
@@ -70,7 +70,7 @@ wss.on('connection', (ws: WebSocket) => {
             }
           }
 
-          ws.send(response)
+          ws.send(JSON.stringify(response))
           
           updateRoom(msg.roomId);
 
@@ -99,7 +99,8 @@ wss.on('connection', (ws: WebSocket) => {
           break;
         }
       }
-    } catch {
+    } catch(error) {
+      console.error(error)
       ws.send("Invalid message");
       ws.close();
     }

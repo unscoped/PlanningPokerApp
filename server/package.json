@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "none",
   "scripts": {
-    "start": "cross-env NODE_ENV=production ts-node --transpile-only src/server.ts",
+    "start": "ts-node src/server.ts",
+    "start2": "cross-env NODE_ENV=production ts-node --transpile-only src/server.ts",
     "dev": "cross-env NODE_ENV=development nodemon --watch src --delay 1 --exec 'ts-node' src/server.ts",
     "test": "jest --forceExit --detectOpenHandles",
     "lint": "tslint -p tsconfig.json -c tslint.json"

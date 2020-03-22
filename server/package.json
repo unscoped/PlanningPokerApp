@@ -28,9 +28,7 @@
     "ts-jest": "^25.2.1",
     "ts-node": "^8.7.0",
     "typescript": "^3.8.3",
-    "ws": "^7.2.3"
-  },
-  "devDependencies": {
+    "ws": "^7.2.3",
     "@types/bcrypt": "^3.0.0",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.6",
@@ -43,6 +41,8 @@
     "@types/node": "^13.9.2",
     "@types/supertest": "^2.0.8",
     "@types/ws": "^7.2.3",
+  },
+  "devDependencies": {
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2",
     "tslint": "^6.1.0",

@@ -24,8 +24,7 @@ export interface JoinResponseMessage {
   type: MessageType.JoinResponse;
   roomId: string;
   payload: {
-    id: string;
-    room: Room;
+    userId: string;
   };
 }
 

@@ -6,7 +6,7 @@ import {Message, MessageType, JoinResponseMessage, RoomUpdateMessage} from '../.
 import Uuid from 'pure-uuid';
 
 const rooms: {[key: string]: Room} = {}
-const users: {[key: string]: WebSocket}
+let users: {[key: string]: WebSocket} = {}
 
 const port = process.env.PORT || 8999;
 
@@ -29,7 +29,7 @@ const updateRoom = (roomId: string) => {
     }
   }
 
-  room.users.forEach((user) => {
+  Object.values(room.users).forEach((user) => {
     users[user.id].send(msg)
   })
 }
@@ -46,32 +46,59 @@ wss.on('connection', (ws: WebSocket) => {
       const msg: Message = JSON.parse(message)
       switch(msg.type) {
         case MessageType.JoinRequest: {
-            rooms[msg.roomId].users.push({
-              id: userId,
-              userName: msg.payload.name,
-              voteValue: undefined,
-            })
-            users[userId] = ws;
-            
-            updateRoom(msg.roomId);
-
-            break;
+          rooms[msg.roomId].users[userId] = {
+            id: userId,
+            userName: msg.payload.name,
+            voteValue: undefined,
           }
-          case MessageType.LeaveRequest: {
-            rooms[msg.roomId].users = rooms[msg.roomId].users.filter(user => user.id !== userId)
+          users[userId] = ws;
 
-            break;
+          const response: JoinResponseMessage = {
+            type: MessageType.JoinResponse,
+            roomId: msg.roomId,
+            payload: {
+              userId,
+            }
           }
+
+          ws.send(response)
+          
+          updateRoom(msg.roomId);
+
+          break;
         }
-      } catch {
-        ws.send("Invalid message");
-        ws.close();
-      }
+        case MessageType.LeaveRequest: {
+          delete rooms[msg.roomId].users[userId]
+          delete users[userId]
 
-    });
+          updateRoom(msg.roomId)
+
+          break;
+        }
+        case MessageType.SetVoteValue: {
+          rooms[msg.roomId].users[userId].voteValue = msg.payload.voteValue
+
+          updateRoom(msg.roomId)
+
+          break;
+        }
+        case MessageType.SetName: {
+          rooms[msg.roomId].users[userId].userName = msg.payload.name
+
+          updateRoom(msg.roomId)
+
+          break;
+        }
+      }
+    } catch {
+      ws.send("Invalid message");
+      ws.close();
+    }
+
+  });
 
     //send immediatly a feedback to the incoming connection    
-    ws.send('Hi there, I am a WebSocket server');
+    // ws.send('Hi there, I am a WebSocket server');
 });
 
 //start our server

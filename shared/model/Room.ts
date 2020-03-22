@@ -3,6 +3,6 @@ import { User } from "./User";
 export interface Room {
   id: string;
   name: string;
-  users: User[];
+  users: {[key: string]: User};
   admin: User | undefined;
 }

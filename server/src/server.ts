@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as http from 'http';
 import * as WebSocket from 'ws';
-import {Room} from '../../shared/model/Room'
+import {Room} from './shared/model/Room'
 import {Message, MessageType, JoinResponseMessage, RoomUpdateMessage} from './shared/model/Message'
 import Uuid from 'pure-uuid';
 

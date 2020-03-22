@@ -46,6 +46,15 @@ wss.on('connection', (ws: WebSocket) => {
       const msg: Message = JSON.parse(message)
       switch(msg.type) {
         case MessageType.JoinRequest: {
+          if(!rooms[msg.roomId]) {
+            rooms[msg.roomId] = {
+              id: msg.roomId,
+              users: {},
+              name: msg.roomId,
+              admin: undefined,
+            }
+          }
+
           rooms[msg.roomId].users[userId] = {
             id: userId,
             userName: msg.payload.name,

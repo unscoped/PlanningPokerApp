@@ -1,12 +1,14 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { User } from '../shared/model/User'
 
-const results = [1, 5, 6, 19]
-
-export const Results = () => {
+type Props = {
+  users: User[]
+}
+export const Results: React.FC<Props> = ({users}) => {
   return (
     <View style={styles.container}>
-      {results.map(result => (<Text>{result}</Text>))}
+      {users.map(user => (<Text key={`${user.id}`}>{user.userName}</Text>))}
     </View>
   )
 }

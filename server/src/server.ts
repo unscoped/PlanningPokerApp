@@ -1,9 +1,11 @@
 import * as express from 'express';
 import * as http from 'http';
 import * as WebSocket from 'ws';
-import {Room} from './shared/model/Room'
+import { Room } from './shared/model/Room'
+import { User } from 'shared/model/User';
 import {Message, MessageType, JoinResponseMessage, RoomUpdateMessage} from './shared/model/Message'
 import Uuid from 'pure-uuid';
+import { stringify } from 'querystring';
 
 const rooms: {[key: string]: Room} = {}
 let users: {[key: string]: WebSocket} = {}
@@ -33,6 +35,12 @@ const updateRoom = (roomId: string) => {
     users[user.id].send(JSON.stringify(msg))
   })
 }
+
+const filterUserFromRoom = (userId: string, room: Room): Room => ({...room,
+    users: Object.entries(room.users)
+    .filter(([uId]) => uId !== userId)
+    .reduce<{[key: string]: User}>((room, [uId, user]) => ({...room, [uId]: user}), {})
+  })
 
 wss.on('connection', (ws: WebSocket) => {
   const userId = new Uuid(4).format()
@@ -105,10 +113,22 @@ wss.on('connection', (ws: WebSocket) => {
       ws.close();
     }
 
+    ws.on('disconnect', () => {
+      // Remove user from users list
+      delete users[userId];
+
+      // Remove user from all rooms and update these rooms
+      Object.keys(rooms).forEach((roomId) => {
+        if(rooms[roomId].users[userId]) {
+          delete rooms[roomId].users[userId];
+
+          updateRoom(roomId);
+        }
+      });
+    })
+
   });
 
-    //send immediatly a feedback to the incoming connection    
-    // ws.send('Hi there, I am a WebSocket server');
 });
 
 //start our server

@@ -4,6 +4,7 @@ import { TextInput } from 'react-native-paper';
 
 import { Results } from './Results';
 import { useRoom } from './RoomHandler';
+import { VoteValues } from './VoteValues';
 
 export const Root: React.FC = () => {
   const [userName, setUserName] = useState<string>('');
@@ -28,6 +29,7 @@ export const Root: React.FC = () => {
           onChangeText={setUserName}
         />
       </View>
+      <VoteValues onValuePress={vote} />
       <Results users={Object.values(room.users)} />
     </View>
   );

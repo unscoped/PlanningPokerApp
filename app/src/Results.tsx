@@ -10,11 +10,9 @@ type Props = {
 export const Results: React.FC<Props> = ({ users }) => {
   const renderUser = useCallback((user: User) => {
     return (
-      <Card style={styles.userCard}>
-        <View key={`${user.id}`}>
-          <Text>{`User: ${user.userName}`}</Text>
-          <Text>{`Vote value: ${user.voteValue}`}</Text>
-        </View>
+      <Card key={`${user.id}`} style={styles.userCard}>
+        <Text>{`User: ${user.userName}`}</Text>
+        <Text>{`Vote value: ${user.voteValue}`}</Text>
       </Card>
     );
   }, []);
@@ -32,10 +30,10 @@ const styles = StyleSheet.create({
   },
   userCard: {
     aspectRatio: 2,
-    width: 100,
-    height: 200,
     backgroundColor: 'tomato',
-    margin: 8,
     elevation: 4,
+    height: 200,
+    margin: 8,
+    width: 100,
   },
 });

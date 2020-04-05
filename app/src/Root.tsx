@@ -1,5 +1,6 @@
 import UUID from 'pure-uuid'
 import React, { useState, useReducer, useEffect, useCallback } from 'react'
+import { Linking } from 'expo'
 import {TextInput, Button, ActivityIndicator} from 'react-native-paper'
 import { View, StatusBar, Text } from 'react-native'
 import { Results } from './Results'
@@ -26,6 +27,7 @@ export const Root:React.FC = () => {
   const [room, setRoom] = useState<Room>(INIT_ROOM);
   const [message, setMessage] = useState<Message>();
   const [errorMessage, setErrorMessage] = useState<ErrorMessage>();
+  const [roomId, setRoomId] = useState();
 
   const joinRoom = useCallback(() => {
     //TODO: Update this to be more exhaustive
@@ -44,6 +46,10 @@ export const Root:React.FC = () => {
       setMessage(joinRequest)
     }
   }, [userName]);
+
+  const urlHandler = useCallback((url) => {
+    console.log("Url received: ", url)
+  }, []);
 
   // Set up the WebSocket connection
   useEffect(() => {
@@ -76,8 +82,15 @@ export const Root:React.FC = () => {
     }
   },[message]);
 
+  useEffect(() => {
+    Linking.getInitialURL()
+      .then(urlHandler)
+      .catch(e => console.error(e))
+  }, [urlHandler])
+
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', padding: 16, paddingTop: StatusBar.currentHeight + 16}}>
+      <Text>{`Room id: ${room.id}`}</Text>
       <View style={{width: "50%"}}>
         <TextInput value={userName} label={"Username"}  onChangeText={(text:string) => setUserName(text)}  />
       </View>

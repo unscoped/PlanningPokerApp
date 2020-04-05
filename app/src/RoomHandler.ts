@@ -17,20 +17,20 @@ import { useUrlParam } from './UrlHandler';
 // const SERVER_HOST = __DEV__ ? 'ws://localhost:8999' : '';
 const SERVER_HOST = 'ws://localhost:8999';
 
-const INIT_ROOM: Room = {
-  id: '',
+const createEmptyRoom = (id: string): Room => ({
+  id,
   name: '',
   users: {},
   admin: undefined,
-};
+});
 
 export const useRoom = (userName: string) => {
   const ws = useRef(new WebSocket(SERVER_HOST)).current;
-  const [room, setRoom] = useState(INIT_ROOM);
+  const [room, setRoom] = useState(
+    createEmptyRoom(useUrlParam('roomId') || new UUID(4).toString()),
+  );
 
   userName = userName || 'Guest';
-
-  const roomId = useUrlParam('roomId') || new UUID(4).toString();
 
   const send = useCallback((msg: any) => ws.send(JSON.stringify(msg)), [ws]);
 
@@ -43,7 +43,7 @@ export const useRoom = (userName: string) => {
 
       const joinRequest: JoinRequestMessage = {
         type: MessageType.JoinRequest,
-        roomId,
+        roomId: room.id,
         payload: {
           name: userName,
         },
@@ -77,25 +77,25 @@ export const useRoom = (userName: string) => {
       }
       // setErrorMessage({ title: 'Oops!', message: 'Something went wrong...' });
     };
-  }, [roomId, send, userName, ws]);
+  }, [room.id, send, userName, ws]);
 
   useEffect(() => {
     if (ws.readyState === WebSocket.OPEN) {
       const updateNameRequest: SetNameMessage = {
         type: MessageType.SetName,
-        roomId,
+        roomId: room.id,
         payload: {
           name: userName,
         },
       };
       send(updateNameRequest);
     }
-  }, [roomId, send, userName, ws.readyState]);
+  }, [room.id, send, userName, ws.readyState]);
 
   const vote = (voteValue: VoteValue) => {
     const msg: SetVoteValueMessage = {
       type: MessageType.SetVoteValue,
-      roomId,
+      roomId: room.id,
       payload: {
         voteValue,
       },

@@ -1,43 +1,20 @@
-import { Linking } from 'expo';
 import UUID from 'pure-uuid';
-import React, { useCallback, useEffect, useReducer, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { StatusBar, Text, View } from 'react-native';
-import { ActivityIndicator, Button, TextInput } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 
-import {
-  JoinRequestMessage,
-  Message,
-  MessageType,
-} from '../shared/model/Message';
-import { Room } from '../shared/model/Room';
+import { JoinRequestMessage, MessageType } from '../shared/model/Message';
 
 import { Results } from './Results';
-
-// TODO: Connect to Heroku 🧙‍♂️
-const SERVER_HOST = __DEV__ ? 'ws://localhost:8999' : '';
-
-type ErrorMessage = {
-  title: string;
-  message: string;
-};
-
-const INIT_ROOM: Room = {
-  id: '',
-  name: '',
-  users: {},
-  admin: undefined,
-};
-
-type JoinUrlParams = {
-  roomId: string;
-};
+import { useRoom } from './RoomHandler';
+import { useUrlParam } from './UrlHandler';
 
 export const Root: React.FC = () => {
   const [userName, setUserName] = useState<string>('');
-  const [room, setRoom] = useState<Room>(INIT_ROOM);
-  const [message, setMessage] = useState<Message>();
-  const [errorMessage, setErrorMessage] = useState<ErrorMessage>();
-  const [roomId, setRoomId] = useState<string>();
+
+  const { send, room } = useRoom();
+
+  const roomId = useUrlParam('roomId');
 
   const joinRoom = useCallback(() => {
     // TODO: Update this to be more exhaustive
@@ -51,56 +28,9 @@ export const Root: React.FC = () => {
           name: userName,
         },
       };
-      setMessage(joinRequest);
+      send(joinRequest);
     }
-  }, [userName, roomId]);
-
-  const urlHandler = useCallback((url) => {
-    console.log('Url received: ', url);
-    const { path, queryParams } = Linking.parse(url);
-
-    try {
-      const parsed = queryParams as JoinUrlParams;
-      setRoomId(parsed.roomId);
-    } catch (error) {
-      console.error('Error casting url query params.', error);
-    }
-  }, []);
-
-  // Set up the WebSocket connection
-  useEffect(() => {
-    if (message) {
-      const ws = new WebSocket(SERVER_HOST);
-
-      ws.onopen = () => {
-        ws.send(JSON.stringify(message));
-      };
-      ws.onmessage = (event) => {
-        const msg: Message = JSON.parse(event.data);
-        console.log('Received message: ', msg);
-
-        switch (msg.type) {
-          case MessageType.RoomUpdate: {
-            console.log('Updating room');
-            setRoom(msg.payload.room);
-            break;
-          }
-          default:
-        }
-      };
-      ws.onerror = (error) => {
-        console.error('Error: ', error);
-        setErrorMessage({ title: 'Oops!', message: 'Something went wrong...' });
-      };
-      return () => ws.close();
-    }
-  }, [message]);
-
-  useEffect(() => {
-    Linking.getInitialURL()
-      .then(urlHandler)
-      .catch((e) => console.error(e));
-  }, [urlHandler]);
+  }, [userName, roomId, send]);
 
   return (
     <View
@@ -109,7 +39,7 @@ export const Root: React.FC = () => {
         justifyContent: 'center',
         alignItems: 'center',
         padding: 16,
-        paddingTop: StatusBar.currentHeight + 16,
+        paddingTop: (StatusBar.currentHeight ?? 0) + 16,
       }}
     >
       <Text>{`Room id: ${roomId || room.id}`}</Text>
@@ -117,7 +47,7 @@ export const Root: React.FC = () => {
         <TextInput
           value={userName}
           label={'Username'}
-          onChangeText={(text: string) => setUserName(text)}
+          onChangeText={setUserName}
         />
       </View>
       <View>

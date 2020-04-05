@@ -1,0 +1,10 @@
+{
+    "eslint.enable": true,
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
+    "eslint.run": "onSave",
+    "eslint.workingDirectories": [
+        "./app",
+        "./server"
+    ],
+}

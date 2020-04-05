@@ -113,7 +113,7 @@ wss.on('connection', (ws: WebSocket) => {
       ws.close();
     }
 
-    ws.on('disconnect', () => {
+    ws.on('close', () => {
       // Remove user from users list
       delete users[userId];
 

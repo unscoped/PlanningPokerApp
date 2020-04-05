@@ -13,9 +13,10 @@ import { VoteValue } from '../shared/model/User';
 
 import { useUrlParam } from './UrlHandler';
 
-// TODO: Connect to Heroku 🧙‍♂️
-// const SERVER_HOST = __DEV__ ? 'ws://localhost:8999' : '';
-const SERVER_HOST = 'ws://localhost:8999';
+// Connect to Heroku 🧙‍♂️ (Update the port)
+const SERVER_HOST = __DEV__
+  ? 'ws://localhost:8999'
+  : 'wss://planningpokerserver.herokuapp.com/:9587';
 
 const createEmptyRoom = (id: string): Room => ({
   id,

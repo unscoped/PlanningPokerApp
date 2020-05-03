@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Card } from 'react-native-paper';
 
@@ -9,10 +9,13 @@ type Props = {
 };
 export const Results: React.FC<Props> = ({ users }) => {
   const renderUser = useCallback((user: User) => {
+    const displayValue =
+      user.voteValue && user.voteValue !== 'hidden' ? user.voteValue : '?';
+
     return (
       <Card key={`${user.id}`} style={styles.userCard}>
         <Text>{`User: ${user.userName}`}</Text>
-        <Text>{`Vote value: ${user.voteValue}`}</Text>
+        <Text>{`Vote value: ${displayValue}`}</Text>
       </Card>
     );
   }, []);

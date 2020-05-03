@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import { StatusBar, Text, View } from 'react-native';
+import React, { useCallback, useState, useEffect } from 'react';
+import { StatusBar, Text, View, AsyncStorage } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 import { Results } from './Results';
@@ -10,6 +10,22 @@ export const Root: React.FC = () => {
   const [userName, setUserName] = useState<string>('');
 
   const { vote, room } = useRoom(userName);
+
+  const updateUserName = useCallback(
+    (newName: string) => {
+      setUserName(newName);
+      AsyncStorage.setItem('username', newName);
+    },
+    [setUserName],
+  );
+
+  useEffect(() => {
+    AsyncStorage.getItem('username').then((savedName) => {
+      if (savedName) {
+        setUserName(savedName);
+      }
+    });
+  });
 
   return (
     <View
@@ -26,7 +42,7 @@ export const Root: React.FC = () => {
         <TextInput
           value={userName}
           label={'Username'}
-          onChangeText={setUserName}
+          onChangeText={updateUserName}
         />
       </View>
       <VoteValues onValuePress={vote} />

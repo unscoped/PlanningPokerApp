@@ -1,11 +1,14 @@
 {
+  "homepage": "https://spoony-rocket.github.io/PlanningPokerApp/",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "deploy": "gh-pages -d web-build",
+    "predeploy": "expo build:web"
   },
   "dependencies": {
     "expo": "^37.0.0",
@@ -38,6 +41,7 @@
     "eslint-plugin-react-hooks": "2.3.0",
     "eslint-plugin-react-native": "3.8.1",
     "eslint-plugin-standard": "4.0.1",
+    "gh-pages": "^2.2.0",
     "prettier": "^2.0.2",
     "typescript": "^3.8.3"
   },

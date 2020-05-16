@@ -14,7 +14,7 @@ import Uuid from "pure-uuid";
 const rooms: { [key: string]: Room } = {};
 let users: { [key: string]: WebSocket } = {};
 
-const port = process.env.NODE_ENV === "production" ? 13579 : 8999;
+const port = process.env.PORT || 8999;
 
 const app = express();
 

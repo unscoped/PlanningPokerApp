@@ -16,7 +16,7 @@ import { useUrlParam } from './UrlHandler';
 // Connect to Heroku 🧙‍♂️ (Update the port)
 const SERVER_HOST = __DEV__
   ? 'ws://localhost:8999'
-  : 'wss://planningpokerserver.herokuapp.com/:9587';
+  : 'wss://planningpokerserver.herokuapp.com/';
 
 const createEmptyRoom = (id: string): Room => ({
   id,

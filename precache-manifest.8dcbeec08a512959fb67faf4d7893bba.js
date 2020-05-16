@@ -16,12 +16,12 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/./fonts/MaterialCommunityIcons.ttf"
   },
   {
-    "revision": "ec543248d7b23864564429fc03837190",
-    "url": "/PlanningPokerApp/serve.json"
-  },
-  {
     "revision": "48c7ed4e7da9792af288a60d7242d615",
     "url": "/PlanningPokerApp/expo-service-worker.js"
+  },
+  {
+    "revision": "ec543248d7b23864564429fc03837190",
+    "url": "/PlanningPokerApp/serve.json"
   },
   {
     "revision": "e10ce0552ee7802193950fa9181bd961",

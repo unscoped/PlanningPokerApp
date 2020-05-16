@@ -1,42 +1,65 @@
 import React, { useCallback, useMemo } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Card } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+import { Surface, Text, useTheme } from 'react-native-paper';
 
 import { User } from '../shared/model/User';
 
+import { FlexWrapRow } from './atoms/Row';
+import { fontStyles } from './styles/Font';
+
 type Props = {
   users: User[];
+  isDark: boolean;
 };
-export const Results: React.FC<Props> = ({ users }) => {
-  const renderUser = useCallback((user: User) => {
-    const displayValue =
-      user.voteValue && user.voteValue !== 'hidden' ? user.voteValue : '?';
+export const Results: React.FC<Props> = ({ users, isDark }) => {
+  const { colors, roundness } = useTheme();
+  const renderUser = useCallback(
+    (user: User) => {
+      const displayValue =
+        user.voteValue && user.voteValue !== 'hidden' ? user.voteValue : '?';
 
-    return (
-      <Card key={`${user.id}`} style={styles.userCard}>
-        <Text>{`User: ${user.userName}`}</Text>
-        <Text>{`Vote value: ${displayValue}`}</Text>
-      </Card>
-    );
-  }, []);
+      return (
+        <Surface
+          key={`${user.id}`}
+          style={[
+            styles.userCard,
+            { borderRadius: roundness * 2, overflow: 'hidden' },
+          ]}
+        >
+          <View
+            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+          >
+            <Text style={fontStyles.headline3}>{displayValue}</Text>
+          </View>
+          <View
+            style={{
+              alignItems: 'center',
+              backgroundColor: isDark ? colors.accent : colors.primary,
+              flexShrink: 1,
+              paddingHorizontal: 4,
+            }}
+          >
+            <Text
+              style={[fontStyles.body1, { color: isDark ? 'black' : 'white' }]}
+              numberOfLines={1}
+            >
+              {user.userName}
+            </Text>
+          </View>
+        </Surface>
+      );
+    },
+    [colors.accent, colors.primary, isDark, roundness],
+  );
 
-  return <View style={styles.container}>{users.map(renderUser)}</View>;
+  return <FlexWrapRow mode="center">{users.map(renderUser)}</FlexWrapRow>;
 };
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '50%',
-  },
   userCard: {
-    aspectRatio: 2,
-    backgroundColor: 'tomato',
-    elevation: 4,
-    height: 200,
+    height: 150,
     margin: 8,
     width: 100,
+    elevation: 8,
   },
 });

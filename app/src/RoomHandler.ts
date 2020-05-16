@@ -32,7 +32,7 @@ export const useRoom = (userName: string) => {
   const roomId = useUrlParam('roomId');
 
   if (Platform.OS === 'web' && !roomId) {
-    window.location.href = '/?roomId=' + new UUID(4).toString();
+    window.location.search = 'roomId=' + new UUID(4).toString();
   }
 
   const [room, setRoom] = useState(

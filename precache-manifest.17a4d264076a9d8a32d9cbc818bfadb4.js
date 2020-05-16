@@ -1,22 +1,22 @@
 self.__precacheManifest = [
   {
-    "revision": "b7d0fcfabfdc5c10bc54",
-    "url": "/PlanningPokerApp/static/js/app.582451de.chunk.js"
+    "revision": "3feb4d6e315048d7c864",
+    "url": "/PlanningPokerApp/static/js/app.26dc2aae.chunk.js"
   },
   {
     "revision": "031039d1c24866f12272",
     "url": "/PlanningPokerApp/static/js/runtime~app.cb7c7dd4.js"
   },
   {
-    "revision": "9bc727f03b70c8a7d8ae",
-    "url": "/PlanningPokerApp/static/js/2.4bc13170.chunk.js"
+    "revision": "58530afb862f1c49fb08",
+    "url": "/PlanningPokerApp/static/js/2.ea4600c9.chunk.js"
   },
   {
-    "revision": "5a293a273bee8d740a045d9922b9a9ae",
+    "revision": "3c851d60ad5ef3f2fe43ebd263490d78",
     "url": "/PlanningPokerApp/./fonts/MaterialCommunityIcons.ttf"
   },
   {
-    "revision": "d0c694b562b2208635f250762cd7fc79",
+    "revision": "ec543248d7b23864564429fc03837190",
     "url": "/PlanningPokerApp/serve.json"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/favicon.ico"
   },
   {
-    "revision": "dc7996e2a8ad931047fe5eb4b8fb5ac8",
+    "revision": "7698428c8da648c47b41bcf5a3510c7a",
     "url": "/PlanningPokerApp/index.html"
   },
   {
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/manifest.json"
   },
   {
-    "revision": "5ec06aa1f161b200e330e619809b03ea",
+    "revision": "9387266830fc56c269165c447df8a4dd",
     "url": "/PlanningPokerApp/register-service-worker.js"
   }
 ];

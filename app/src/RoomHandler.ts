@@ -1,5 +1,7 @@
+import * as Linking from 'expo-linking';
 import UUID from 'pure-uuid';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Platform } from 'react-native';
 
 import {
   JoinRequestMessage,
@@ -27,8 +29,14 @@ const createEmptyRoom = (id: string): Room => ({
 
 export const useRoom = (userName: string) => {
   const ws = useRef(new WebSocket(SERVER_HOST)).current;
+  const roomId = useUrlParam('roomId');
+
+  if (Platform.OS === 'web' && !roomId) {
+    window.location.href = '/?roomId=' + new UUID(4).toString();
+  }
+
   const [room, setRoom] = useState(
-    createEmptyRoom(useUrlParam('roomId') || new UUID(4).toString()),
+    createEmptyRoom(roomId || new UUID(4).toString()),
   );
 
   userName = userName || 'Guest';

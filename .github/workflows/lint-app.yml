@@ -1,0 +1,13 @@
+name: Lint
+
+on: pull_request
+
+jobs:
+  eslint:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: hallee/eslint-action@master
+        with:
+          repo-token: ${{secrets.GITHUB_TOKEN}}
+          source-root: app

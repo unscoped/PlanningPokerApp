@@ -59,6 +59,12 @@ export const useRoom = (userName: string) => {
       send(joinRequest);
     };
     ws.onmessage = (event) => {
+      if (event.data === 'Heartbeat') {
+        // eslint-disable-next-line
+        console.log('Received heartbeat from server');
+        return;
+      }
+
       const msg: Message = JSON.parse(event.data);
 
       if (__DEV__) {

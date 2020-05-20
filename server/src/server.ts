@@ -56,16 +56,6 @@ const updateRoom = (roomId: string) => {
   });
 };
 
-// const filterUserFromRoom = (userId: string, room: Room): Room => ({
-//   ...room,
-//   users: Object.entries(room.users)
-//     .filter(([uId]) => uId !== userId)
-//     .reduce<{ [key: string]: User }>(
-//       (room, [uId, user]) => ({ ...room, [uId]: user }),
-//       {}
-//     ),
-// });
-
 wss.on("connection", (ws: WebSocket) => {
   const userId = new Uuid(4).format();
 
@@ -151,6 +141,11 @@ wss.on("connection", (ws: WebSocket) => {
       });
     });
   });
+
+  setInterval(() => {
+    // This is necessary as Heroku kill connection after 55 seconds of inactivity
+    ws.send('Heartbeat');
+  }, 30000);
 });
 
 //start our server

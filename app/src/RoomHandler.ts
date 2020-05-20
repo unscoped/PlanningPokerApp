@@ -29,6 +29,7 @@ const createEmptyRoom = (id: string): Room => ({
 export const useRoom = (userName: string) => {
   const ws = useRef(new WebSocket(SERVER_HOST)).current;
   const roomId = useUrlParam('roomId');
+  const [voteValue, setVoteValue] = useState<VoteValue>();
 
   if (Platform.OS === 'web' && !roomId) {
     window.location.search = 'roomId=' + new UUID(4).toString();
@@ -106,16 +107,17 @@ export const useRoom = (userName: string) => {
     }
   }, [room.id, send, userName, ws.readyState]);
 
-  const vote = (voteValue: VoteValue) => {
+  const vote = (newVoteValue: VoteValue) => {
+    setVoteValue(newVoteValue);
     const msg: SetVoteValueMessage = {
       type: MessageType.SetVoteValue,
       roomId: room.id,
       payload: {
-        voteValue,
+        voteValue: newVoteValue,
       },
     };
     send(msg);
   };
 
-  return { vote, room };
+  return { voteValue, vote, room };
 };

@@ -1,4 +1,5 @@
 export enum Colors {
+  DarkZero = '#97b498',
   DarkOne = '#94cc7d',
   DarkTwo = '#69cb30',
   DarkThree = '#c8cc00',
@@ -7,6 +8,8 @@ export enum Colors {
   DarkThirteen = '#a252b7',
   DarkTwentyOne = '#8a8a8a',
   DarkUnknown = '#000000',
+  DarkDisabled = '#333',
+  LightZero = '#c8e6c9',
   LightOne = '#C6FFAD',
   LightTwo = '#9EFF64',
   LightThree = '#FFFF3C',
@@ -15,4 +18,5 @@ export enum Colors {
   LightThirteen = '#D581EA',
   LightTwentyOne = '#BABABA',
   LightUnknown = '#FFFFFF',
+  LightDisabled = '#ccc',
 }

@@ -23,7 +23,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const [userName, setUserName] = useState<string>('');
   const styles = useStyleSheet(createStyleSheet);
 
-  const { vote, room } = useRoom(userName);
+  const { voteValue, vote, room } = useRoom(userName);
 
   const updateUserName = useCallback(
     (newName: string) => {
@@ -71,7 +71,11 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
         </View>
         <View>
           <Spacer />
-          <VoteValues onValuePress={vote} isDark={isDark} />
+          <VoteValues
+            onValuePress={vote}
+            isDark={isDark}
+            selectedValue={voteValue}
+          />
           <Spacer />
         </View>
         <Results users={Object.values(room.users)} />

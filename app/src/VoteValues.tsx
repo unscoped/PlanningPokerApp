@@ -13,11 +13,17 @@ type Props = {
   value: VoteValue;
   onPress: (value: VoteValue) => void;
   isDark: boolean;
+  greyedOut: boolean;
 };
 
 const values: VoteValue[] = [0, 1, 2, 3, 5, 8, 13, 21, '🤔'];
 
-export const ValueCard: React.FC<Props> = ({ value, onPress, isDark }) => {
+export const ValueCard: React.FC<Props> = ({
+  value,
+  onPress,
+  isDark,
+  greyedOut,
+}) => {
   const styles = useStyleSheet(createStyleSheet);
   const onCardPress = useCallback(() => onPress(value), [onPress, value]);
 
@@ -26,7 +32,9 @@ export const ValueCard: React.FC<Props> = ({ value, onPress, isDark }) => {
       style={[
         styles.valueContainer,
         {
-          backgroundColor: getColorForValue(value, isDark),
+          backgroundColor: greyedOut
+            ? getColorForValue(-1, isDark)
+            : getColorForValue(value, isDark),
         },
       ]}
       onPress={onCardPress}
@@ -40,6 +48,10 @@ export const ValueCard: React.FC<Props> = ({ value, onPress, isDark }) => {
 
 const getColorForValue = (value: VoteValue, dark: boolean): Colors => {
   switch (value) {
+    case -1:
+      return dark ? Colors.DarkDisabled : Colors.LightDisabled;
+    case 0:
+      return dark ? Colors.DarkZero : Colors.LightZero;
     case 1:
       return dark ? Colors.DarkOne : Colors.LightOne;
     case 2:
@@ -61,10 +73,15 @@ const getColorForValue = (value: VoteValue, dark: boolean): Colors => {
 
 type ValuesProps = {
   onValuePress: (value: VoteValue) => void;
+  selectedValue: VoteValue | undefined;
   isDark: boolean;
 };
 
-export const VoteValues: React.FC<ValuesProps> = ({ onValuePress, isDark }) => {
+export const VoteValues: React.FC<ValuesProps> = ({
+  onValuePress,
+  selectedValue,
+  isDark,
+}) => {
   return (
     <FlexWrapRow mode="center">
       {values.map((value) => (
@@ -73,6 +90,7 @@ export const VoteValues: React.FC<ValuesProps> = ({ onValuePress, isDark }) => {
           value={value}
           onPress={onValuePress}
           isDark={isDark}
+          greyedOut={selectedValue !== undefined && selectedValue !== value}
         />
       ))}
     </FlexWrapRow>

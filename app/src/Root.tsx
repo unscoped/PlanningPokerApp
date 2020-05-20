@@ -81,7 +81,7 @@ export const Root: React.FC<Props> = ({ isDark, onDarkModeChange }) => {
           <TextInput
             value={userName}
             label={'Username'}
-            onChangeText={setUserName}
+            onChangeText={updateUserName}
           />
         </View>
         <View style={{ paddingVertical: 8 }}>

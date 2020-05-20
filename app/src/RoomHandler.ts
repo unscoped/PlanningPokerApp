@@ -1,4 +1,3 @@
-import * as Linking from 'expo-linking';
 import UUID from 'pure-uuid';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';

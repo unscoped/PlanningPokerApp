@@ -22,6 +22,7 @@ type Props = {
 export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const [userName, setUserName] = useState<string>('');
   const styles = useStyleSheet(createStyleSheet);
+  const theme = useTheme();
 
   const { voteValue, vote, room } = useRoom(userName);
 
@@ -52,10 +53,9 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
         <FlexWrapRow mode="space-evenly">
           <View style={styles.flexRow}>
             <RoomCard roomId={room.id} />
-            <Spacer />
           </View>
+          <Spacer medium />
           <View style={styles.flexRow}>
-            <Spacer />
             <UserCard username={userName} />
           </View>
         </FlexWrapRow>
@@ -63,6 +63,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
         <View style={styles.fillWidth}>
           <Spacer />
           <TextInput
+            style={{ backgroundColor: theme.colors.background }}
             value={userName}
             label={'Username'}
             onChangeText={updateUserName}
@@ -101,7 +102,7 @@ const createStyleSheet = (theme: Theme) =>
       borderBottomWidth: 2,
     },
     fillWidth: { alignSelf: 'stretch' },
-    flexRow: { flex: 1, flexDirection: 'row' },
+    flexRow: { flex: 1 },
     page: {
       alignItems: 'center',
       backgroundColor: theme.colors.primary,

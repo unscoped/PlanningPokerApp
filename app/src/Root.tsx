@@ -1,15 +1,7 @@
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect, useState } from 'react';
-import { AsyncStorage, StatusBar, StyleSheet, View } from 'react-native';
-import { useColorScheme } from 'react-native-appearance';
-import {
-  Card,
-  Divider,
-  Surface,
-  Text,
-  TextInput,
-  useTheme,
-} from 'react-native-paper';
+import { AsyncStorage, StyleSheet, View } from 'react-native';
+import { Surface, Text, TextInput, useTheme } from 'react-native-paper';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 import { Results } from './Results';
@@ -18,16 +10,14 @@ import { VoteValues } from './VoteValues';
 import { FlexWrapRow } from './atoms/Row';
 import { RoomCard } from './builders/RoomCard';
 import { UserCard } from './builders/UserCard';
-import { useManualDarkMode } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
-import { gridStyles } from './styles/Grid';
 
 type Props = {
   isDark: boolean;
-  onDarkModeChange: () => void;
+  toggleTheme: () => void;
 };
 
-export const Root: React.FC<Props> = ({ isDark, onDarkModeChange }) => {
+export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const [userName, setUserName] = useState<string>('');
   const { colors } = useTheme();
 
@@ -47,7 +37,7 @@ export const Root: React.FC<Props> = ({ isDark, onDarkModeChange }) => {
         setUserName(savedName);
       }
     });
-  });
+  }, []);
 
   return (
     <Surface
@@ -59,7 +49,7 @@ export const Root: React.FC<Props> = ({ isDark, onDarkModeChange }) => {
       <Surface style={styles.canvas}>
         <FlexWrapRow mode="space-between">
           <Text style={fontStyles.headline3}>{'Planning Poker 🎲'}</Text>
-          <Switch value={isDark} onChange={onDarkModeChange} />
+          <Switch value={isDark} onChange={toggleTheme} />
         </FlexWrapRow>
         <View
           style={{

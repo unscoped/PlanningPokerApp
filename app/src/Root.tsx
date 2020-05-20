@@ -1,15 +1,17 @@
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
-import { Surface, Text, TextInput, useTheme } from 'react-native-paper';
+import { Surface, Text, TextInput, Theme, useTheme } from 'react-native-paper';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 import { Results } from './Results';
 import { useRoom } from './RoomHandler';
 import { VoteValues } from './VoteValues';
 import { FlexWrapRow } from './atoms/Row';
+import { Spacer } from './atoms/Spacer';
 import { RoomCard } from './builders/RoomCard';
 import { UserCard } from './builders/UserCard';
+import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
 
 type Props = {
@@ -19,7 +21,7 @@ type Props = {
 
 export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const [userName, setUserName] = useState<string>('');
-  const { colors } = useTheme();
+  const styles = useStyleSheet(createStyleSheet);
 
   const { vote, room } = useRoom(userName);
 
@@ -40,59 +42,66 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   }, []);
 
   return (
-    <Surface
-      style={[
-        { backgroundColor: colors.primary, paddingBottom: 32 },
-        styles.page,
-      ]}
-    >
+    <Surface style={styles.page}>
       <Surface style={styles.canvas}>
         <FlexWrapRow mode="space-between">
           <Text style={fontStyles.headline3}>{'Planning Poker 🎲'}</Text>
           <Switch value={isDark} onChange={toggleTheme} />
         </FlexWrapRow>
-        <View
-          style={{
-            borderBottomColor: isDark ? colors.accent : colors.primary,
-            borderBottomWidth: 2,
-            alignSelf: 'stretch',
-          }}
-        />
+        <View style={styles.divider} />
         <FlexWrapRow mode="space-evenly">
-          <View style={{ flex: 1, paddingRight: 8 }}>
+          <View style={styles.flexRow}>
             <RoomCard roomId={room.id} />
+            <Spacer />
           </View>
-          <View style={{ flex: 1, paddingLeft: 8 }}>
+          <View style={styles.flexRow}>
+            <Spacer />
             <UserCard username={userName} />
           </View>
         </FlexWrapRow>
 
-        <View style={{ alignSelf: 'stretch', paddingVertical: 8 }}>
+        <View style={styles.fillWidth}>
+          <Spacer />
           <TextInput
             value={userName}
             label={'Username'}
             onChangeText={updateUserName}
           />
+          <Spacer />
         </View>
-        <View style={{ paddingVertical: 8 }}>
+        <View>
+          <Spacer />
           <VoteValues onValuePress={vote} isDark={isDark} />
+          <Spacer />
         </View>
-        <Results users={Object.values(room.users)} isDark={isDark} />
+        <Results users={Object.values(room.users)} />
       </Surface>
     </Surface>
   );
 };
 
-const styles = StyleSheet.create({
-  page: {
-    alignItems: 'center',
-    flex: 1,
-  },
-  canvas: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    alignItems: 'center',
-    width: wp('80%'),
-    height: '100%',
-  },
-});
+const createStyleSheet = (theme: Theme) =>
+  StyleSheet.create({
+    canvas: {
+      alignItems: 'center',
+      height: '100%',
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+      width: wp('80%'),
+    },
+    divider: {
+      alignSelf: 'stretch',
+      borderBottomColor: theme.dark
+        ? theme.colors.accent
+        : theme.colors.primary,
+      borderBottomWidth: 2,
+    },
+    fillWidth: { alignSelf: 'stretch' },
+    flexRow: { flex: 1, flexDirection: 'row' },
+    page: {
+      alignItems: 'center',
+      backgroundColor: theme.colors.primary,
+      flex: 1,
+      paddingBottom: 32,
+    },
+  });

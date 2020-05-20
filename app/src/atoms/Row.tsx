@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 type FlexWrapRowProps = {
   mode?:
@@ -13,17 +13,18 @@ type FlexWrapRowProps = {
 
 export const FlexWrapRow: React.FC<FlexWrapRowProps> = ({ children, mode }) => {
   return (
-    <View
-      style={{
-        alignItems: 'center',
-        alignSelf: 'stretch',
-        flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: mode,
-      }}
-    >
+    <View style={[styles.flexWrapRow, { justifyContent: mode }]}>
       {children}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  flexWrapRow: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+});

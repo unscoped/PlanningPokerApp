@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useColorScheme } from 'react-native-appearance';
-import { Card, Text } from 'react-native-paper';
+import { Card, Text, Theme } from 'react-native-paper';
 
 import { Colors } from '../ConfigConstants';
 import { VoteValue } from '../shared/model/User';
 
 import { FlexWrapRow } from './atoms/Row';
+import { useStyleSheet } from './hooks/Theme';
 
 type Props = {
   value: VoteValue;
@@ -17,6 +18,7 @@ type Props = {
 const values: VoteValue[] = [0, 1, 2, 3, 5, 8, 13, 21, '🤔'];
 
 export const ValueCard: React.FC<Props> = ({ value, onPress, isDark }) => {
+  const styles = useStyleSheet(createStyleSheet);
   const onCardPress = useCallback(() => onPress(value), [onPress, value]);
 
   return (
@@ -77,21 +79,22 @@ export const VoteValues: React.FC<ValuesProps> = ({ onValuePress, isDark }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  valueContainer: {
-    marginHorizontal: 8,
-    elevation: 4,
-    marginVertical: 4,
-  },
-  valueCard: {
-    alignItems: 'center',
-    borderRadius: 8,
-    height: 50,
-    justifyContent: 'center',
-    width: 50,
-  },
-});
+const createStyleSheet = (theme: Theme) =>
+  StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
+    valueCard: {
+      alignItems: 'center',
+      borderRadius: 8,
+      height: 50,
+      justifyContent: 'center',
+      width: 50,
+    },
+    valueContainer: {
+      marginHorizontal: 8,
+      elevation: 4,
+      marginVertical: 4,
+    },
+  });

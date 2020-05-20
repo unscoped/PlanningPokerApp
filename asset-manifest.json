@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/PlanningPokerApp/static/js/app.4a301d94.chunk.js",
-    "app.js.map": "/PlanningPokerApp/static/js/app.4a301d94.chunk.js.map",
+    "app.js": "/PlanningPokerApp/static/js/app.155bbf63.chunk.js",
+    "app.js.map": "/PlanningPokerApp/static/js/app.155bbf63.chunk.js.map",
     "runtime~app.js": "/PlanningPokerApp/static/js/runtime~app.80b4ea95.js",
     "runtime~app.js.map": "/PlanningPokerApp/static/js/runtime~app.80b4ea95.js.map",
-    "static/js/2.02c72503.chunk.js": "/PlanningPokerApp/static/js/2.02c72503.chunk.js",
-    "static/js/2.02c72503.chunk.js.map": "/PlanningPokerApp/static/js/2.02c72503.chunk.js.map",
+    "static/js/2.24fd9652.chunk.js": "/PlanningPokerApp/static/js/2.24fd9652.chunk.js",
+    "static/js/2.24fd9652.chunk.js.map": "/PlanningPokerApp/static/js/2.24fd9652.chunk.js.map",
     "fonts/MaterialCommunityIcons.ttf": "/PlanningPokerApp/./fonts/MaterialCommunityIcons.ttf",
     "favicon-16.png": "/PlanningPokerApp/favicon-16.png",
     "favicon-32.png": "/PlanningPokerApp/favicon-32.png",
@@ -16,7 +16,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.80b4ea95.js",
-    "static/js/2.02c72503.chunk.js",
-    "static/js/app.4a301d94.chunk.js"
+    "static/js/2.24fd9652.chunk.js",
+    "static/js/app.155bbf63.chunk.js"
   ]
 }

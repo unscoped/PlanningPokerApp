@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   flexWrapRow: {
     alignItems: 'center',
     alignSelf: 'stretch',
-    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginVertical: 16,
   },
 });

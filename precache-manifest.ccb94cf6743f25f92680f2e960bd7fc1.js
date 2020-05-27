@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "447d933ed3c117ae66ed",
-    "url": "/PlanningPokerApp/static/js/app.d60ab2ea.chunk.js"
+    "revision": "9b93379d45dd0d0d2845",
+    "url": "/PlanningPokerApp/static/js/app.d730b146.chunk.js"
   },
   {
     "revision": "5d4c635bf96f141fc0d5",
     "url": "/PlanningPokerApp/static/js/runtime~app.80b4ea95.js"
   },
   {
-    "revision": "63770b26209242d3d70a",
-    "url": "/PlanningPokerApp/static/js/2.975ec28e.chunk.js"
+    "revision": "267259a98d5e634509fc",
+    "url": "/PlanningPokerApp/static/js/2.08952a9a.chunk.js"
   },
   {
     "revision": "3c851d60ad5ef3f2fe43ebd263490d78",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/favicon.ico"
   },
   {
-    "revision": "8532346908bfae8864f937b372706d18",
+    "revision": "5783d134aa48bf046e5706090ccae842",
     "url": "/PlanningPokerApp/index.html"
   },
   {

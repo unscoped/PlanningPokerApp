@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/PlanningPokerApp/precache-manifest.4898f0b7cb8f392d1253ec7e4a4e8386.js"
+  "/PlanningPokerApp/precache-manifest.ccb94cf6743f25f92680f2e960bd7fc1.js"
 );
 
 workbox.skipWaiting();

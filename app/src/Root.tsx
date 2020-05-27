@@ -45,10 +45,12 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   return (
     <Surface style={styles.page}>
       <Surface style={styles.canvas}>
-        <FlexWrapRow mode="space-between">
+        <View style={styles.head}>
           <Text style={fontStyles.headline3}>{'Planning Poker 🎲'}</Text>
-          <Switch value={isDark} onChange={toggleTheme} />
-        </FlexWrapRow>
+          <View style={styles.switchWrapper}>
+            <Switch value={isDark} onChange={toggleTheme} />
+          </View>
+        </View>
         <View style={styles.divider} />
         <FlexWrapRow mode="space-evenly">
           <View style={styles.flexRow}>
@@ -92,7 +94,7 @@ const createStyleSheet = (theme: Theme) =>
       height: '100%',
       paddingHorizontal: 16,
       paddingVertical: 16,
-      width: wp('80%'),
+      width: wp('90%'),
     },
     divider: {
       alignSelf: 'stretch',
@@ -103,10 +105,20 @@ const createStyleSheet = (theme: Theme) =>
     },
     fillWidth: { alignSelf: 'stretch' },
     flexRow: { flex: 1 },
+    head: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+    },
     page: {
       alignItems: 'center',
       backgroundColor: theme.colors.primary,
       flex: 1,
       paddingBottom: 32,
+    },
+    switchWrapper: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      marginHorizontal: 16,
     },
   });

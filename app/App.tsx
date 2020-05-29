@@ -1,3 +1,5 @@
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AsyncStorage } from 'react-native';
 import { AppearanceProvider } from 'react-native-appearance';
@@ -10,6 +12,11 @@ import Theme from './src/styles/Theme';
 export default () => {
   const isSystemDark = useSystemDarkMode();
   const [isDark, setIsDark] = useState(isSystemDark);
+
+  const [fontsLoaded] = useFonts({
+    Poppins: require('./assets/fonts/Poppins-Regular.ttf'),
+  });
+
   const toggleTheme = useCallback(() => {
     setIsDark(!isDark);
     AsyncStorage.setItem('isDark', JSON.stringify(!isDark));
@@ -20,6 +27,10 @@ export default () => {
       if (savedIsDark) setIsDark(JSON.parse(savedIsDark));
     });
   }, []);
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <AppearanceProvider>

@@ -11,6 +11,7 @@
     "predeploy": "expo build:web"
   },
   "dependencies": {
+    "@use-expo/font": "^2.0.0",
     "expo": "^37.0.0",
     "expo-dark-mode-switch": "^0.0.1",
     "pure-uuid": "^1.6.0",

@@ -8,6 +8,7 @@ import { VoteValue } from '../shared/model/User';
 
 import { FlexWrapRow } from './atoms/Row';
 import { useStyleSheet } from './hooks/Theme';
+import { fontStyles } from './styles/Font';
 
 type Props = {
   value: VoteValue;
@@ -40,7 +41,9 @@ export const ValueCard: React.FC<Props> = ({
       onPress={onCardPress}
     >
       <View style={styles.valueCard}>
-        <Text>{value}</Text>
+        <Text style={[fontStyles.subtitle1, { fontWeight: '900' }]}>
+          {value}
+        </Text>
       </View>
     </Card>
   );

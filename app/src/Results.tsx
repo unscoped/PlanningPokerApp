@@ -10,17 +10,36 @@ import { fontStyles } from './styles/Font';
 
 type Props = {
   users: User[];
+  userId?: string;
 };
-export const Results: React.FC<Props> = ({ users }) => {
+
+const AvatarWatermark: React.FC = () => {
+  const styles = useStyleSheet(createStyleSheet);
+  return (
+    <View style={styles.avatarWatermark}>
+      <Text style={fontStyles.body2}>{'👤'}</Text>
+    </View>
+  );
+};
+
+export const Results: React.FC<Props> = ({ users, userId }) => {
   const styles = useStyleSheet(createStyleSheet);
 
   const renderUser = useCallback(
     (user: User) => {
+      const isCurrentUser = user.id === userId;
       const displayValue =
         user.voteValue && user.voteValue !== 'hidden' ? user.voteValue : '?';
 
       return (
-        <Surface key={`${user.id}`} style={styles.userCard}>
+        <Surface
+          key={`${user.id}`}
+          style={[
+            isCurrentUser && styles.currentUserDecoration,
+            styles.userCard,
+          ]}
+        >
+          {isCurrentUser && <AvatarWatermark />}
           <View style={styles.userCardTitleContainer}>
             <Text style={fontStyles.headline3}>{displayValue}</Text>
           </View>
@@ -33,10 +52,12 @@ export const Results: React.FC<Props> = ({ users }) => {
       );
     },
     [
+      styles.currentUserDecoration,
       styles.subtitle,
       styles.userCard,
       styles.userCardSubtitleContainer,
       styles.userCardTitleContainer,
+      userId,
     ],
   );
 
@@ -45,6 +66,15 @@ export const Results: React.FC<Props> = ({ users }) => {
 
 const createStyleSheet = (theme: Theme) =>
   StyleSheet.create({
+    avatarWatermark: {
+      position: 'absolute',
+      top: 4,
+      right: 4,
+    },
+    currentUserDecoration: {
+      borderWidth: 2,
+      borderColor: theme.dark ? theme.colors.accent : theme.colors.primary,
+    },
     subtitle: { ...fontStyles.body1, color: theme.dark ? 'black' : 'white' },
     userCard: {
       borderRadius: theme.roundness * 2,

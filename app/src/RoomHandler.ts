@@ -30,6 +30,7 @@ export const useRoom = (userName: string) => {
   const ws = useRef(new WebSocket(SERVER_HOST)).current;
   const roomId = useUrlParam('roomId');
   const [voteValue, setVoteValue] = useState<VoteValue>();
+  const [userId, setUserId] = useState<string>();
 
   if (Platform.OS === 'web' && !roomId) {
     window.location.search = 'roomId=' + new UUID(4).toString();
@@ -74,6 +75,10 @@ export const useRoom = (userName: string) => {
       }
 
       switch (msg.type) {
+        case MessageType.JoinResponse: {
+          setUserId(msg.payload.userId);
+          break;
+        }
         case MessageType.RoomUpdate: {
           if (__DEV__) {
             // eslint-disable-next-line no-console
@@ -119,5 +124,5 @@ export const useRoom = (userName: string) => {
     send(msg);
   };
 
-  return { voteValue, vote, room };
+  return { voteValue, vote, room, userId };
 };

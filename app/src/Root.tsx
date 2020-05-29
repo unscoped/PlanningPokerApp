@@ -22,9 +22,8 @@ type Props = {
 export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const [userName, setUserName] = useState<string>('');
   const styles = useStyleSheet(createStyleSheet);
-  const theme = useTheme();
 
-  const { voteValue, vote, room } = useRoom(userName);
+  const { voteValue, vote, room, userId } = useRoom(userName);
 
   const updateUserName = useCallback(
     (newName: string) => {
@@ -58,20 +57,9 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
           </View>
           <Spacer medium />
           <View style={styles.flexRow}>
-            <UserCard username={userName} />
+            <UserCard username={userName} onUsernameChange={updateUserName} />
           </View>
         </FlexWrapRow>
-
-        <View style={styles.fillWidth}>
-          <Spacer />
-          <TextInput
-            style={{ backgroundColor: theme.colors.background }}
-            value={userName}
-            label={'Username'}
-            onChangeText={updateUserName}
-          />
-          <Spacer />
-        </View>
         <View>
           <Spacer />
           <VoteValues
@@ -81,7 +69,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
           />
           <Spacer />
         </View>
-        <Results users={Object.values(room.users)} />
+        <Results users={Object.values(room.users)} userId={userId} />
       </Surface>
     </Surface>
   );
@@ -104,7 +92,7 @@ const createStyleSheet = (theme: Theme) =>
       borderBottomWidth: 2,
     },
     fillWidth: { alignSelf: 'stretch' },
-    flexRow: { flex: 1 },
+    flexRow: { flex: 1, height: '100%' },
     head: {
       flexDirection: 'row',
       justifyContent: 'space-between',

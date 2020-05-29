@@ -3,11 +3,12 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 
 import {
-  JoinRequestMessage,
+  IJoinRequestMessage,
+  IResetMessage,
+  ISetNameMessage,
+  ISetVoteValueMessage,
   Message,
   MessageType,
-  SetNameMessage,
-  SetVoteValueMessage,
 } from '../shared/model/Message';
 import { Room } from '../shared/model/Room';
 import { VoteValue } from '../shared/model/User';
@@ -51,7 +52,7 @@ export const useRoom = (userName: string) => {
         console.log('Opened WebSocket connection');
       }
 
-      const joinRequest: JoinRequestMessage = {
+      const joinRequest: IJoinRequestMessage = {
         type: MessageType.JoinRequest,
         roomId: room.id,
         payload: {
@@ -85,6 +86,9 @@ export const useRoom = (userName: string) => {
             console.log('Updating room');
           }
           setRoom(msg.payload.room);
+          if (userId && msg.payload.room.users[userId].voteValue !== 'hidden') {
+            setVoteValue(msg.payload.room.users[userId].voteValue);
+          }
           break;
         }
         default:
@@ -97,11 +101,11 @@ export const useRoom = (userName: string) => {
       }
       // setErrorMessage({ title: 'Oops!', message: 'Something went wrong...' });
     };
-  }, [room.id, send, userName, ws]);
+  }, [room.id, send, userId, userName, ws]);
 
   useEffect(() => {
     if (ws.readyState === WebSocket.OPEN) {
-      const updateNameRequest: SetNameMessage = {
+      const updateNameRequest: ISetNameMessage = {
         type: MessageType.SetName,
         roomId: room.id,
         payload: {
@@ -114,7 +118,7 @@ export const useRoom = (userName: string) => {
 
   const vote = (newVoteValue: VoteValue) => {
     setVoteValue(newVoteValue);
-    const msg: SetVoteValueMessage = {
+    const msg: ISetVoteValueMessage = {
       type: MessageType.SetVoteValue,
       roomId: room.id,
       payload: {
@@ -124,5 +128,20 @@ export const useRoom = (userName: string) => {
     send(msg);
   };
 
-  return { voteValue, vote, room, userId };
+  const reset = () => {
+    setVoteValue(undefined);
+    const msg: IResetMessage = {
+      type: MessageType.Reset,
+      roomId: room.id,
+    };
+    send(msg);
+  };
+
+  return {
+    reset,
+    room,
+    userId,
+    vote,
+    voteValue,
+  };
 };

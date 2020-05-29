@@ -1,24 +1,26 @@
-import { Room } from "./Room";
-import { VoteValue } from "./User";
+import { Room } from './Room';
+import { VoteValue } from './User';
 
-export type Message = 
-  | JoinRequestMessage
-  | JoinResponseMessage
-  | SetVoteValueMessage
-  | SetNameMessage
-  | LeaveRequestMessage
-  | RoomUpdateMessage;
+export type Message =
+  | IJoinRequestMessage
+  | IJoinResponseMessage
+  | ILeaveRequestMessage
+  | IResetMessage
+  | IRoomUpdateMessage
+  | ISetNameMessage
+  | ISetVoteValueMessage;
 
 export enum MessageType {
   JoinRequest,
   JoinResponse,
   LeaveRequest,
-  SetVoteValue,
-  SetName,
+  Reset,
   RoomUpdate,
+  SetName,
+  SetVoteValue,
 }
 
-export interface JoinRequestMessage {
+export interface IJoinRequestMessage {
   type: MessageType.JoinRequest;
   roomId: string;
   payload: {
@@ -26,7 +28,7 @@ export interface JoinRequestMessage {
   };
 }
 
-export interface JoinResponseMessage {
+export interface IJoinResponseMessage {
   type: MessageType.JoinResponse;
   roomId: string;
   payload: {
@@ -34,7 +36,7 @@ export interface JoinResponseMessage {
   };
 }
 
-export interface SetVoteValueMessage {
+export interface ISetVoteValueMessage {
   type: MessageType.SetVoteValue;
   roomId: string;
   payload: {
@@ -42,7 +44,7 @@ export interface SetVoteValueMessage {
   };
 }
 
-export interface SetNameMessage {
+export interface ISetNameMessage {
   type: MessageType.SetName;
   roomId: string;
   payload: {
@@ -50,15 +52,20 @@ export interface SetNameMessage {
   };
 }
 
-export interface LeaveRequestMessage {
+export interface ILeaveRequestMessage {
   type: MessageType.LeaveRequest;
   roomId: string;
 }
 
-export interface RoomUpdateMessage {
+export interface IRoomUpdateMessage {
   type: MessageType.RoomUpdate;
   roomId: string;
   payload: {
     room: Room;
   };
+}
+
+export interface IResetMessage {
+  type: MessageType.Reset;
+  roomId: string;
 }

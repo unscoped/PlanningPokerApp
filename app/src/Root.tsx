@@ -1,12 +1,13 @@
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
-import { Surface, Text, TextInput, Theme, useTheme } from 'react-native-paper';
+import { Surface, Text, Theme } from 'react-native-paper';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 import { Results } from './Results';
 import { useRoom } from './RoomHandler';
 import { VoteValues } from './VoteValues';
+import { ResetButton } from './atoms/ResetButton';
 import { FlexWrapRow } from './atoms/Row';
 import { Spacer } from './atoms/Spacer';
 import { RoomCard } from './builders/RoomCard';
@@ -23,7 +24,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const [userName, setUserName] = useState<string>('');
   const styles = useStyleSheet(createStyleSheet);
 
-  const { voteValue, vote, room, userId } = useRoom(userName);
+  const { voteValue, vote, room, userId, reset } = useRoom(userName);
 
   const updateUserName = useCallback(
     (newName: string) => {
@@ -60,6 +61,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
             <UserCard username={userName} onUsernameChange={updateUserName} />
           </View>
         </FlexWrapRow>
+        <ResetButton onPress={reset} />
         <View>
           <Spacer />
           <VoteValues

@@ -1,2 +1,2 @@
 # PlanningPokerApp
-Good version of planning poker
+See the product at: https://spoony-rocket.github.io/PlanningPokerApp/

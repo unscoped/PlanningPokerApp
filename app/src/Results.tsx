@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Surface, Text, Theme, useTheme } from 'react-native-paper';
 
-import { User } from '../shared/model/User';
+import { User, VoteValue } from '../shared/model/User';
 
 import { FlexWrapRow } from './atoms/Row';
 import { useStyleSheet } from './hooks/Theme';
@@ -61,7 +61,25 @@ export const Results: React.FC<Props> = ({ users, userId }) => {
     ],
   );
 
-  return <FlexWrapRow mode="center">{users.map(renderUser)}</FlexWrapRow>;
+  return (
+    <FlexWrapRow mode="center">
+      {users
+        .sort(
+          (a: User, b: User) =>
+            voteValueToNumber(a.voteValue) - voteValueToNumber(b.voteValue),
+        )
+        .map(renderUser)}
+    </FlexWrapRow>
+  );
+};
+
+const voteValueToNumber = (v: VoteValue) => {
+  switch (typeof v) {
+    case 'number':
+      return v;
+    default:
+      return Number.MAX_SAFE_INTEGER;
+  }
 };
 
 const createStyleSheet = (theme: Theme) =>

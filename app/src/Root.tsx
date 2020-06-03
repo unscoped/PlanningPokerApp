@@ -57,7 +57,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
           </View>
           <Spacer medium />
           <View style={styles.flexRow}>
-            <UserCard username={userName} onUsernameChange={updateUserName} />
+            <UserCard userName={userName} onUsernameChange={updateUserName} />
           </View>
         </FlexWrapRow>
         <View>
@@ -69,7 +69,12 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
           />
           <Spacer />
         </View>
-        <Results users={Object.values(room.users)} userId={userId} />
+        <Results
+          users={Object.values(room.users)}
+          userId={userId}
+          userName={userName}
+          onUsernameChange={updateUserName}
+        />
       </Surface>
     </Surface>
   );

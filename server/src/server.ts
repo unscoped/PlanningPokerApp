@@ -1,13 +1,13 @@
 import * as express from "express";
 import * as http from "http";
 import * as WebSocket from "ws";
-import { Room } from "./shared/model/Room";
+import { Room } from "../../app/shared/model/Room";
 import {
   Message,
   MessageType,
   IJoinResponseMessage,
   IRoomUpdateMessage,
-} from "./shared/model/Message";
+} from "../../app/shared/model/Message";
 import Uuid from "pure-uuid";
 
 const rooms: { [key: string]: Room } = {};

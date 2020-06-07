@@ -1,7 +1,7 @@
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
-import { Surface, Text, TextInput, Theme, useTheme } from 'react-native-paper';
+import { Surface, Text, Theme } from 'react-native-paper';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 import { Results } from './Results';
@@ -57,7 +57,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
           </View>
           <Spacer medium />
           <View style={styles.flexRow}>
-            <UserCard userName={userName} onUsernameChange={updateUserName} />
+            <UserCard userName={userName} onUserNameChange={updateUserName} />
           </View>
         </FlexWrapRow>
         <View>
@@ -73,7 +73,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
           users={Object.values(room.users)}
           userId={userId}
           userName={userName}
-          onUsernameChange={updateUserName}
+          onUserNameChange={updateUserName}
         />
       </Surface>
     </Surface>

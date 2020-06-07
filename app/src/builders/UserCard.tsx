@@ -8,12 +8,12 @@ import { fontStyles } from '../styles/Font';
 
 type UserCardProps = {
   userName: string;
-  onUsernameChange: (value: string) => void;
+  onUserNameChange: (value: string) => void;
 };
 
 export const UserCard: React.FC<UserCardProps> = ({
   userName,
-  onUsernameChange,
+  onUserNameChange,
 }) => {
   const styles = useStyleSheet(createStyleSheet);
   const theme = useTheme();
@@ -26,7 +26,7 @@ export const UserCard: React.FC<UserCardProps> = ({
           style={{ backgroundColor: theme.colors.background }}
           value={userName}
           label={'Username'}
-          onChangeText={onUsernameChange}
+          onChangeText={onUserNameChange}
         />
         <Spacer medium />
       </View>

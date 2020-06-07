@@ -6,7 +6,7 @@ import { User } from '../shared/model/User';
 
 import { AvatarWatermark } from './atoms/AvatarWatermark';
 import { FlexWrapRow } from './atoms/Row';
-import { FixedUsername, UpdatableUsername } from './atoms/Username';
+import { FixedUserName, UpdatableUserName } from './atoms/UserName';
 import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
 
@@ -14,14 +14,14 @@ type Props = {
   users: User[];
   userId?: string;
   userName?: string;
-  onUsernameChange: (text: string) => void;
+  onUserNameChange: (text: string) => void;
 };
 
 export const Results: React.FC<Props> = ({
   users,
   userId,
   userName,
-  onUsernameChange,
+  onUserNameChange,
 }) => {
   const styles = useStyleSheet(createStyleSheet);
 
@@ -44,18 +44,18 @@ export const Results: React.FC<Props> = ({
             <Text style={fontStyles.headline3}>{displayValue}</Text>
           </View>
           {isCurrentUser ? (
-            <UpdatableUsername
+            <UpdatableUserName
               value={userName}
-              onChangeText={onUsernameChange}
+              onChangeText={onUserNameChange}
             />
           ) : (
-            <FixedUsername userName={user.userName} />
+            <FixedUserName userName={user.userName} />
           )}
         </Surface>
       );
     },
     [
-      onUsernameChange,
+      onUserNameChange,
       styles.currentUserDecoration,
       styles.userCard,
       styles.userCardTitleContainer,

@@ -5,12 +5,12 @@ import { Text, Theme } from 'react-native-paper';
 import { useStyleSheet } from '../hooks/Theme';
 import { fontStyles } from '../styles/Font';
 
-type UpdatableUsernameProps = {
+type UpdatableUserNameProps = {
   value?: string;
   onChangeText: (text: string) => void;
 };
 
-export const UpdatableUsername: React.FC<UpdatableUsernameProps> = ({
+export const UpdatableUserName: React.FC<UpdatableUserNameProps> = ({
   value,
   onChangeText,
 }) => {
@@ -36,13 +36,13 @@ export const UpdatableUsername: React.FC<UpdatableUsernameProps> = ({
   if (!isActive) {
     return (
       <TouchableOpacity onPress={toggleIsActive}>
-        <FixedUsername userName={value} />
+        <FixedUserName userName={value} />
       </TouchableOpacity>
     );
   }
 
   return (
-    <View style={styles.updatableUsernameContainer}>
+    <View style={styles.updatableUserNameContainer}>
       <View style={{ flex: 1 }}>
         <TextInput
           ref={inlineInputRef}
@@ -59,7 +59,7 @@ export const UpdatableUsername: React.FC<UpdatableUsernameProps> = ({
   );
 };
 
-export const FixedUsername: React.FC<{ userName?: string }> = ({
+export const FixedUserName: React.FC<{ userName?: string }> = ({
   userName,
 }) => {
   const styles = useStyleSheet(createStyleSheet);
@@ -86,7 +86,7 @@ const createStyleSheet = (theme: Theme) =>
       fontWeight: '900',
     },
     subtitle: { ...fontStyles.body1, color: theme.dark ? 'black' : 'white' },
-    updatableUsernameContainer: {
+    updatableUserNameContainer: {
       alignItems: 'center',
       backgroundColor: theme.dark ? theme.colors.accent : theme.colors.primary,
       flexDirection: 'row',

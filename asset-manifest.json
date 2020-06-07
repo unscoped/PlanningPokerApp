@@ -4,8 +4,8 @@
     "app.js.map": "/PlanningPokerApp/static/js/app.dac862da.chunk.js.map",
     "runtime~app.js": "/PlanningPokerApp/static/js/runtime~app.80b4ea95.js",
     "runtime~app.js.map": "/PlanningPokerApp/static/js/runtime~app.80b4ea95.js.map",
-    "static/js/2.a8d07789.chunk.js": "/PlanningPokerApp/static/js/2.a8d07789.chunk.js",
-    "static/js/2.a8d07789.chunk.js.map": "/PlanningPokerApp/static/js/2.a8d07789.chunk.js.map",
+    "static/js/2.8b74e50c.chunk.js": "/PlanningPokerApp/static/js/2.8b74e50c.chunk.js",
+    "static/js/2.8b74e50c.chunk.js.map": "/PlanningPokerApp/static/js/2.8b74e50c.chunk.js.map",
     "fonts/MaterialCommunityIcons.ttf": "/PlanningPokerApp/./fonts/MaterialCommunityIcons.ttf",
     "fonts/Poppins-Regular.ttf": "/PlanningPokerApp/./fonts/Poppins-Regular.ttf",
     "favicon-16.png": "/PlanningPokerApp/favicon-16.png",
@@ -17,7 +17,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.80b4ea95.js",
-    "static/js/2.a8d07789.chunk.js",
+    "static/js/2.8b74e50c.chunk.js",
     "static/js/app.dac862da.chunk.js"
   ]
 }

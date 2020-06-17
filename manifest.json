@@ -2,8 +2,8 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "lang": "en",
-  "name": "Blank Template (TypeScript)",
-  "short_name": "Blank Template (TypeScript)",
+  "name": "Planning Poker",
+  "short_name": "Planning Poker",
   "start_url": "/?utm_source=web_app_manifest",
   "orientation": "portrait",
   "icons": [

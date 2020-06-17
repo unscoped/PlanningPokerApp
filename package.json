@@ -1,0 +1,12 @@
+{
+  "name": "planningpokerapp",
+  "version": "0.0.1",
+  "description": "Main entry to the planning poker project",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "git@github.com:Spoony-Rocket/PlanningPokerApp.git",
+  "scripts": {
+    "postinstall": "yarn --cwd app; yarn --cwd server",
+    "start": "yarn --cwd server start-prod"
+  }
+}

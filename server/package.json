@@ -4,7 +4,7 @@
   "license": "none",
   "scripts": {
     "start": "ts-node src/server.ts",
-    "start2": "cross-env NODE_ENV=production ts-node --transpile-only src/server.ts",
+    "start-prod": "cross-env NODE_ENV=production ts-node --transpile-only src/server.ts",
     "dev": "cross-env NODE_ENV=development nodemon --watch src --delay 1 --exec 'ts-node' src/server.ts",
     "test": "jest --forceExit --detectOpenHandles",
     "lint": "tslint -p tsconfig.json -c tslint.json"

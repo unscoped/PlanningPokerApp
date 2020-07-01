@@ -73,7 +73,12 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
           />
           <Spacer />
         </View>
-        <Results users={Object.values(room.users)} userId={userId} />
+        <Results
+          users={Object.values(room.users)}
+          userId={userId}
+          userName={name}
+          onUserNameChange={setName}
+        />
       </Surface>
     </Surface>
   );

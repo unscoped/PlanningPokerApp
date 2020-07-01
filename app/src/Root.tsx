@@ -1,5 +1,5 @@
 import Switch from 'expo-dark-mode-switch';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
 import { Surface, Text, Theme } from 'react-native-paper';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
@@ -11,7 +11,6 @@ import { ResetButton } from './atoms/ResetButton';
 import { FlexWrapRow } from './atoms/Row';
 import { Spacer } from './atoms/Spacer';
 import { RoomCard } from './builders/RoomCard';
-import { UserCard } from './builders/UserCard';
 import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
 
@@ -21,26 +20,33 @@ type Props = {
 };
 
 export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
-  const [userName, setUserName] = useState<string>('');
   const styles = useStyleSheet(createStyleSheet);
 
-  const { voteValue, vote, room, userId, reset } = useRoom(userName);
+  const {
+    name,
+    setName: setNameNotUse,
+    voteValue,
+    vote,
+    room,
+    userId,
+    reset,
+  } = useRoom();
 
-  const updateUserName = useCallback(
+  const setName = useCallback(
     (newName: string) => {
-      setUserName(newName);
+      setNameNotUse(newName);
       AsyncStorage.setItem('username', newName);
     },
-    [setUserName],
+    [setNameNotUse],
   );
 
   useEffect(() => {
     AsyncStorage.getItem('username').then((savedName) => {
       if (savedName) {
-        setUserName(savedName);
+        setName(savedName);
       }
     });
-  }, []);
+  }, [setName]);
 
   return (
     <Surface style={styles.page}>
@@ -54,11 +60,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
         <View style={styles.divider} />
         <FlexWrapRow mode="space-evenly">
           <View style={styles.flexRow}>
-            <RoomCard roomId={room.id} />
-          </View>
-          <Spacer medium />
-          <View style={styles.flexRow}>
-            <UserCard username={userName} onUsernameChange={updateUserName} />
+            <RoomCard roomId={room.id + name} />
           </View>
         </FlexWrapRow>
         <ResetButton onPress={reset} />

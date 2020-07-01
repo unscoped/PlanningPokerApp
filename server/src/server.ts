@@ -1,14 +1,13 @@
 import * as express from "express";
 import * as http from "http";
 import * as WebSocket from "ws";
-import { Room } from "./shared/model/Room";
-import { User } from "shared/model/User";
+import { Room } from "../../app/shared/model/Room";
 import {
   Message,
   MessageType,
-  JoinResponseMessage,
-  RoomUpdateMessage,
-} from "./shared/model/Message";
+  IJoinResponseMessage,
+  IRoomUpdateMessage,
+} from "../../app/shared/model/Message";
 import Uuid from "pure-uuid";
 
 const rooms: { [key: string]: Room } = {};
@@ -23,6 +22,18 @@ const server = http.createServer(app);
 
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });
+
+const resetValuesInRoom = (room: Room): Room => {
+  return {
+    ...room,
+    users: Object.fromEntries(
+      Object.entries(room.users).map(([key, user]) => [
+        key,
+        { ...user, voteValue: undefined },
+      ])
+    )
+  }
+}
 
 const filterValuesFromRoom = (room: Room): Room => {
   return {
@@ -43,7 +54,7 @@ const updateRoom = (roomId: string) => {
     (user) => user.voteValue
   );
 
-  const msg: RoomUpdateMessage = {
+  const msg: IRoomUpdateMessage = {
     type: MessageType.RoomUpdate,
     roomId: room.id,
     payload: {
@@ -84,7 +95,7 @@ wss.on("connection", (ws: WebSocket) => {
           };
           users[userId] = ws;
 
-          const response: JoinResponseMessage = {
+          const response: IJoinResponseMessage = {
             type: MessageType.JoinResponse,
             roomId: msg.roomId,
             payload: {
@@ -115,6 +126,13 @@ wss.on("connection", (ws: WebSocket) => {
         }
         case MessageType.SetName: {
           rooms[msg.roomId].users[userId].userName = msg.payload.name;
+
+          updateRoom(msg.roomId);
+
+          break;
+        }
+        case MessageType.Reset: {
+          rooms[msg.roomId] = resetValuesInRoom(rooms[msg.roomId])
 
           updateRoom(msg.roomId);
 

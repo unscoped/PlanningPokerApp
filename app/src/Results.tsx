@@ -1,14 +1,9 @@
-import React, { useCallback } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Surface, Text, Theme } from 'react-native-paper';
+import React from 'react';
 
-import { User } from '../shared/model/User';
+import { User, VoteValue } from '../shared/model/User';
 
-import { AvatarWatermark } from './atoms/AvatarWatermark';
+import { ResultCard } from './ResultCard';
 import { FlexWrapRow } from './atoms/Row';
-import { FixedUserName, UpdatableUserName } from './atoms/UserName';
-import { useStyleSheet } from './hooks/Theme';
-import { fontStyles } from './styles/Font';
 
 type Props = {
   users: User[];
@@ -20,70 +15,37 @@ type Props = {
 export const Results: React.FC<Props> = ({
   users,
   userId,
-  userName,
   onUserNameChange,
 }) => {
-  const styles = useStyleSheet(createStyleSheet);
+  return (
+    <FlexWrapRow mode="center">
+      {users
+        .sort(
+          (a: User, b: User) =>
+            voteValueToNumber(a.voteValue) - voteValueToNumber(b.voteValue),
+        )
+        .map((user) => {
+          const isCurrentUser = user.id === userId;
 
-  const renderUser = useCallback(
-    (user: User) => {
-      const isCurrentUser = user.id === userId;
-      const displayValue =
-        user.voteValue && user.voteValue !== 'hidden' ? user.voteValue : '?';
-
-      return (
-        <Surface
-          key={`${user.id}`}
-          style={[
-            isCurrentUser && styles.currentUserDecoration,
-            styles.userCard,
-          ]}
-        >
-          {isCurrentUser && <AvatarWatermark />}
-          <View style={styles.userCardTitleContainer}>
-            <Text style={fontStyles.headline3}>{displayValue}</Text>
-          </View>
-          {isCurrentUser ? (
-            <UpdatableUserName
-              value={userName}
-              onChangeText={onUserNameChange}
+          return (
+            <ResultCard
+              key={user.id}
+              resultValue={user.voteValue}
+              showAvatar={isCurrentUser}
+              username={user.userName}
+              onUserNameChange={onUserNameChange}
             />
-          ) : (
-            <FixedUserName userName={user.userName} />
-          )}
-        </Surface>
-      );
-    },
-    [
-      onUserNameChange,
-      styles.currentUserDecoration,
-      styles.userCard,
-      styles.userCardTitleContainer,
-      userId,
-      userName,
-    ],
+          );
+        })}
+    </FlexWrapRow>
   );
-
-  return <FlexWrapRow mode="center">{users.map(renderUser)}</FlexWrapRow>;
 };
 
-const createStyleSheet = (theme: Theme) =>
-  StyleSheet.create({
-    currentUserDecoration: {
-      borderColor: theme.dark ? theme.colors.accent : theme.colors.primary,
-      borderWidth: 2,
-    },
-    userCard: {
-      borderRadius: theme.roundness * 2,
-      elevation: 8,
-      height: 150,
-      margin: 8,
-      overflow: 'hidden',
-      width: 100,
-    },
-    userCardTitleContainer: {
-      alignItems: 'center',
-      flex: 1,
-      justifyContent: 'center',
-    },
-  });
+const voteValueToNumber = (v: VoteValue) => {
+  switch (typeof v) {
+    case 'number':
+      return v;
+    default:
+      return Number.MAX_SAFE_INTEGER;
+  }
+};

@@ -4,6 +4,7 @@ import { Surface, Text, Theme } from 'react-native-paper';
 
 import { VoteValue } from '../shared/model/User';
 
+import { FixedUserName, UpdatableUserName } from './atoms/UserName';
 import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
 
@@ -20,12 +21,14 @@ type Props = {
   showAvatar: boolean;
   resultValue: VoteValue;
   username: string;
+  onUserNameChange: (text: string) => void;
 };
 
 export const ResultCard: React.FC<Props> = ({
+  onUserNameChange,
+  resultValue,
   showAvatar,
   username,
-  resultValue,
 }) => {
   const styles = useStyleSheet(createStyleSheet);
 
@@ -38,11 +41,11 @@ export const ResultCard: React.FC<Props> = ({
       <View style={styles.resultCardTitleContainer}>
         <Text style={fontStyles.headline3}>{displayValue}</Text>
       </View>
-      <View style={styles.resultCardSubtitleContainer}>
-        <Text style={styles.subtitle} numberOfLines={1}>
-          {username}
-        </Text>
-      </View>
+      {showAvatar ? (
+        <UpdatableUserName value={username} onChangeText={onUserNameChange} />
+      ) : (
+        <FixedUserName userName={username} />
+      )}
     </Surface>
   );
 };
@@ -65,12 +68,6 @@ const createStyleSheet = (theme: Theme) =>
       margin: 8,
       overflow: 'hidden',
       width: 100,
-    },
-    resultCardSubtitleContainer: {
-      alignItems: 'center',
-      backgroundColor: theme.dark ? theme.colors.accent : theme.colors.primary,
-      flexShrink: 1,
-      paddingHorizontal: 4,
     },
     resultCardTitleContainer: {
       alignItems: 'center',

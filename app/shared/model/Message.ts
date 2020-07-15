@@ -11,13 +11,13 @@ export type Message =
   | ISetVoteValueMessage;
 
 export enum MessageType {
-  JoinRequest,
-  JoinResponse,
-  LeaveRequest,
-  Reset,
-  RoomUpdate,
-  SetName,
-  SetVoteValue,
+  JoinRequest = 'JoinRequest',
+  JoinResponse = 'JoinResponse',
+  LeaveRequest = 'LeaveRequest',
+  Reset = 'Reset',
+  RoomUpdate = 'RoomUpdate',
+  SetName = 'SetName',
+  SetVoteValue = 'SetVoteValue',
 }
 
 export interface IJoinRequestMessage {

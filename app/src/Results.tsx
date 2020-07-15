@@ -26,24 +26,39 @@ export const Results: React.FC<Props> = ({ users, userId }) => {
   const styles = useStyleSheet(createStyleSheet);
 
   const renderUser = useCallback(
-    (user: User) => {
+    (user: User, minVoteValue: VoteValue, maxVoteValue: VoteValue) => {
       const isCurrentUser = user.id === userId;
-      const displayValue =
-        user.voteValue && user.voteValue !== 'hidden' ? user.voteValue : '?';
-
+      const isDisplayValue =
+        user.voteValue !== undefined && user.voteValue !== 'hidden';
+      const isExtreme =
+        isDisplayValue &&
+        minVoteValue !== maxVoteValue &&
+        (user.voteValue === minVoteValue || user.voteValue === maxVoteValue);
       return (
         <Surface
           key={`${user.id}`}
           style={[
-            isCurrentUser && styles.currentUserDecoration,
+            isCurrentUser
+              ? isExtreme
+                ? styles.currentUserDecorationHighlight
+                : styles.currentUserDecoration
+              : null,
             styles.userCard,
           ]}
         >
-          {isCurrentUser && <AvatarWatermark />}
+          {isCurrentUser ? <AvatarWatermark /> : null}
           <View style={styles.userCardTitleContainer}>
-            <Text style={fontStyles.headline3}>{displayValue}</Text>
+            <Text style={fontStyles.headline3}>
+              {isDisplayValue ? user.voteValue : '?'}
+            </Text>
           </View>
-          <View style={styles.userCardSubtitleContainer}>
+          <View
+            style={
+              isCurrentUser && isExtreme
+                ? styles.userCardSubtitleContainerHighlight
+                : styles.userCardSubtitleContainer
+            }
+          >
             <Text style={styles.subtitle} numberOfLines={1}>
               {user.userName}
             </Text>
@@ -53,22 +68,26 @@ export const Results: React.FC<Props> = ({ users, userId }) => {
     },
     [
       styles.currentUserDecoration,
+      styles.currentUserDecorationHighlight,
       styles.subtitle,
       styles.userCard,
       styles.userCardSubtitleContainer,
+      styles.userCardSubtitleContainerHighlight,
       styles.userCardTitleContainer,
       userId,
     ],
   );
+  const sortedUser = users.sort(
+    (a: User, b: User) =>
+      voteValueToNumber(a.voteValue) - voteValueToNumber(b.voteValue),
+  );
+
+  const minVoteValue = users.length ? users[0].voteValue : 0;
+  const maxVoteValue = users.length ? users[users.length - 1].voteValue : 0;
 
   return (
     <FlexWrapRow mode="center">
-      {users
-        .sort(
-          (a: User, b: User) =>
-            voteValueToNumber(a.voteValue) - voteValueToNumber(b.voteValue),
-        )
-        .map(renderUser)}
+      {sortedUser.map((u) => renderUser(u, minVoteValue, maxVoteValue))}
     </FlexWrapRow>
   );
 };
@@ -93,6 +112,10 @@ const createStyleSheet = (theme: Theme) =>
       borderWidth: 2,
       borderColor: theme.dark ? theme.colors.accent : theme.colors.primary,
     },
+    currentUserDecorationHighlight: {
+      borderWidth: 2,
+      borderColor: 'red',
+    },
     subtitle: { ...fontStyles.body1, color: theme.dark ? 'black' : 'white' },
     userCard: {
       borderRadius: theme.roundness * 2,
@@ -102,15 +125,21 @@ const createStyleSheet = (theme: Theme) =>
       overflow: 'hidden',
       width: 100,
     },
-    userCardTitleContainer: {
-      alignItems: 'center',
-      flex: 1,
-      justifyContent: 'center',
-    },
     userCardSubtitleContainer: {
       alignItems: 'center',
       backgroundColor: theme.dark ? theme.colors.accent : theme.colors.primary,
       flexShrink: 1,
       paddingHorizontal: 4,
+    },
+    userCardSubtitleContainerHighlight: {
+      alignItems: 'center',
+      backgroundColor: 'red',
+      flexShrink: 1,
+      paddingHorizontal: 4,
+    },
+    userCardTitleContainer: {
+      alignItems: 'center',
+      flex: 1,
+      justifyContent: 'center',
     },
   });

@@ -51,7 +51,7 @@ const updateRoom = (roomId: string) => {
   const room = rooms[roomId];
 
   const everyoneVoted = Object.values(room.users).every(
-    (user) => user.voteValue
+    (user) => user.voteValue !== undefined && user.voteValue !== "hidden"
   );
 
   const msg: IRoomUpdateMessage = {

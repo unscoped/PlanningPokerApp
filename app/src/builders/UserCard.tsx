@@ -7,13 +7,13 @@ import { useStyleSheet } from '../hooks/Theme';
 import { fontStyles } from '../styles/Font';
 
 type UserCardProps = {
-  username: string;
-  onUsernameChange: (value: string) => void;
+  userName: string;
+  onUserNameChange: (value: string) => void;
 };
 
 export const UserCard: React.FC<UserCardProps> = ({
-  username,
-  onUsernameChange,
+  userName,
+  onUserNameChange,
 }) => {
   const styles = useStyleSheet(createStyleSheet);
   const theme = useTheme();
@@ -24,9 +24,9 @@ export const UserCard: React.FC<UserCardProps> = ({
         <Text style={fontStyles.headline5}>User</Text>
         <TextInput
           style={{ backgroundColor: theme.colors.background }}
-          value={username}
+          value={userName}
           label={'Username'}
-          onChangeText={onUsernameChange}
+          onChangeText={onUserNameChange}
         />
         <Spacer medium />
       </View>

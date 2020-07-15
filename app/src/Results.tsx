@@ -15,6 +15,7 @@ type Props = {
 export const Results: React.FC<Props> = ({
   users,
   userId,
+  userName,
   onUserNameChange,
 }) => {
   const sortedUsers = users.sort(
@@ -40,7 +41,7 @@ export const Results: React.FC<Props> = ({
             key={user.id}
             resultValue={user.voteValue}
             showAvatar={isCurrentUser}
-            username={user.userName}
+            username={userId === user.id && userName ? userName : user.userName}
             isExtreme={isExtreme}
             onUserNameChange={onUserNameChange}
           />

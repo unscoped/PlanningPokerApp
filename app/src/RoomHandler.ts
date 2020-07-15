@@ -149,19 +149,6 @@ export const useRoom = () => {
     createEmptyRoom(roomId || new UUID(4).toString()),
   );
 
-  // useEffect(() => {
-  //   if (ws.readyState === WebSocket.OPEN) {
-  //     const updateNameRequest: ISetNameMessage = {
-  //       type: MessageType.SetName,
-  //       roomId: room.id,
-  //       payload: {
-  //         name: userName,
-  //       },
-  //     };
-  //     send(updateNameRequest);
-  //   }
-  // }, [room.id, send, userName, ws.readyState]);
-
   const setName = (name: string) => {
     setUserName(name);
     const setNameRequest: ISetNameMessage = {

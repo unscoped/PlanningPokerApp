@@ -2,7 +2,7 @@
     "eslint.enable": true,
     "editor.formatOnSave": true,
     "eslint.format.enable": true,
-    "eslint.run": "onSave",
+    "eslint.run": "onType",
     "eslint.workingDirectories": [
         "./app",
         "./server"

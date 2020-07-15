@@ -70,6 +70,9 @@ const createStyleSheet = (theme: Theme) =>
       top: 4,
       right: 4,
     },
+    isExtreme: {
+      borderColor: 'red',
+    },
     resultCard: {
       borderRadius: theme.roundness * 2,
       elevation: 8,
@@ -82,9 +85,6 @@ const createStyleSheet = (theme: Theme) =>
       alignItems: 'center',
       flex: 1,
       justifyContent: 'center',
-    },
-    isExtreme: {
-      borderColor: 'red',
     },
     subtitle: { ...fontStyles.body1, color: theme.dark ? 'black' : 'white' },
   });

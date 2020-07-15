@@ -149,38 +149,45 @@ export const useRoom = () => {
     createEmptyRoom(roomId || new UUID(4).toString()),
   );
 
-  const setName = (name: string) => {
-    setUserName(name);
-    const setNameRequest: ISetNameMessage = {
-      type: MessageType.SetName,
-      roomId: room.id,
-      payload: {
-        name,
-      },
-    };
-    send(ws, setNameRequest);
-  };
+  const setName = useCallback(
+    (name: string) => {
+      console.log('Setting new username: ', name);
+      setUserName(name);
+      const setNameRequest: ISetNameMessage = {
+        type: MessageType.SetName,
+        roomId: room.id,
+        payload: {
+          name,
+        },
+      };
+      send(ws, setNameRequest);
+    },
+    [room.id, ws],
+  );
 
-  const vote = (newVoteValue: VoteValue) => {
-    setVoteValue(newVoteValue);
-    const msg: ISetVoteValueMessage = {
-      type: MessageType.SetVoteValue,
-      roomId: room.id,
-      payload: {
-        voteValue: newVoteValue,
-      },
-    };
-    send(ws, msg);
-  };
+  const vote = useCallback(
+    (newVoteValue: VoteValue) => {
+      setVoteValue(newVoteValue);
+      const msg: ISetVoteValueMessage = {
+        type: MessageType.SetVoteValue,
+        roomId: room.id,
+        payload: {
+          voteValue: newVoteValue,
+        },
+      };
+      send(ws, msg);
+    },
+    [room.id, ws],
+  );
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setVoteValue(undefined);
     const msg: IResetMessage = {
       type: MessageType.Reset,
       roomId: room.id,
     };
     send(ws, msg);
-  };
+  }, [room.id, ws]);
 
   return {
     name: userName,

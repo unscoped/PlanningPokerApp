@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Surface, Text, Theme } from 'react-native-paper';
+import { red100 } from 'react-native-paper/lib/typescript/src/styles/colors';
 
 import { VoteValue } from '../shared/model/User';
 
@@ -21,6 +22,7 @@ type Props = {
   showAvatar: boolean;
   resultValue: VoteValue;
   username: string;
+  isExtreme: boolean;
   onUserNameChange: (text: string) => void;
 };
 
@@ -29,6 +31,7 @@ export const ResultCard: React.FC<Props> = ({
   resultValue,
   showAvatar,
   username,
+  isExtreme,
 }) => {
   const styles = useStyleSheet(createStyleSheet);
 
@@ -36,7 +39,13 @@ export const ResultCard: React.FC<Props> = ({
     resultValue && resultValue !== 'hidden' ? resultValue : '?';
 
   return (
-    <Surface style={[showAvatar && styles.avatarDecoration, styles.resultCard]}>
+    <Surface
+      style={[
+        showAvatar && styles.avatarDecoration,
+        styles.resultCard,
+        isExtreme && styles.isExtreme,
+      ]}
+    >
       {showAvatar && <AvatarWatermark />}
       <View style={styles.resultCardTitleContainer}>
         <Text style={fontStyles.headline3}>{displayValue}</Text>
@@ -73,6 +82,9 @@ const createStyleSheet = (theme: Theme) =>
       alignItems: 'center',
       flex: 1,
       justifyContent: 'center',
+    },
+    isExtreme: {
+      borderColor: 'red',
     },
     subtitle: { ...fontStyles.body1, color: theme.dark ? 'black' : 'white' },
   });

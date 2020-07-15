@@ -17,26 +17,35 @@ export const Results: React.FC<Props> = ({
   userId,
   onUserNameChange,
 }) => {
+  const sortedUsers = users.sort(
+    (a: User, b: User) =>
+      voteValueToNumber(a.voteValue) - voteValueToNumber(b.voteValue),
+  );
+  const minVoteValue = sortedUsers.length ? sortedUsers[0].voteValue : 0;
+  const maxVoteValue = sortedUsers.length
+    ? sortedUsers[sortedUsers.length - 1].voteValue
+    : 0;
   return (
     <FlexWrapRow mode="center">
-      {users
-        .sort(
-          (a: User, b: User) =>
-            voteValueToNumber(a.voteValue) - voteValueToNumber(b.voteValue),
-        )
-        .map((user) => {
-          const isCurrentUser = user.id === userId;
-
-          return (
-            <ResultCard
-              key={user.id}
-              resultValue={user.voteValue}
-              showAvatar={isCurrentUser}
-              username={user.userName}
-              onUserNameChange={onUserNameChange}
-            />
-          );
-        })}
+      {sortedUsers.map((user) => {
+        const isCurrentUser = user.id === userId;
+        const isDisplayValue =
+          user.voteValue !== undefined && user.voteValue !== 'hidden';
+        const isExtreme =
+          isDisplayValue &&
+          minVoteValue !== maxVoteValue &&
+          (user.voteValue === minVoteValue || user.voteValue === maxVoteValue);
+        return (
+          <ResultCard
+            key={user.id}
+            resultValue={user.voteValue}
+            showAvatar={isCurrentUser}
+            username={user.userName}
+            isExtreme={isExtreme}
+            onUserNameChange={onUserNameChange}
+          />
+        );
+      })}
     </FlexWrapRow>
   );
 };

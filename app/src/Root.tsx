@@ -60,7 +60,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
         <View style={styles.divider} />
         <FlexWrapRow mode="space-evenly">
           <View style={styles.flexRow}>
-            <RoomCard roomId={room.id + name} />
+            <RoomCard roomId={room.id} />
           </View>
         </FlexWrapRow>
         <ResetButton onPress={reset} />

@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "fa63f3112cc09ef3281e",
-    "url": "/PlanningPokerApp/static/js/app.fbc308fb.chunk.js"
+    "revision": "4f5c55f473d67fd73f0a",
+    "url": "/PlanningPokerApp/static/js/app.171911ee.chunk.js"
   },
   {
-    "revision": "83cbc9fd1950426e97b7",
-    "url": "/PlanningPokerApp/static/js/runtime~app.4fb4ccf0.js"
+    "revision": "87e532cc617c0ffed4ef",
+    "url": "/PlanningPokerApp/static/js/runtime~app.08a53639.js"
   },
   {
-    "revision": "20453f1fee4cbede3a87",
-    "url": "/PlanningPokerApp/static/js/2.e334f39a.chunk.js"
+    "revision": "4f9f0865db536b918493",
+    "url": "/PlanningPokerApp/static/js/2.9e82821d.chunk.js"
   },
   {
     "revision": "3c851d60ad5ef3f2fe43ebd263490d78",
@@ -20,12 +20,24 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/./fonts/Poppins-Regular.ttf"
   },
   {
+    "revision": "48c7ed4e7da9792af288a60d7242d615",
+    "url": "/PlanningPokerApp/expo-service-worker.js"
+  },
+  {
+    "revision": "07bb9b9acf3b9282f8f60b9fb6fbba01",
+    "url": "/PlanningPokerApp/index.html"
+  },
+  {
+    "revision": "9387266830fc56c269165c447df8a4dd",
+    "url": "/PlanningPokerApp/register-service-worker.js"
+  },
+  {
     "revision": "ec543248d7b23864564429fc03837190",
     "url": "/PlanningPokerApp/serve.json"
   },
   {
-    "revision": "48c7ed4e7da9792af288a60d7242d615",
-    "url": "/PlanningPokerApp/expo-service-worker.js"
+    "revision": "98b656bc8eac62b373424dee174313e8",
+    "url": "/PlanningPokerApp/static/js/2.9e82821d.chunk.js.LICENSE.txt"
   },
   {
     "revision": "9f352dbfac2e6f3d916b9cb5819441dc",
@@ -40,15 +52,7 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/favicon.ico"
   },
   {
-    "revision": "578b5555463c2bc40cfcb20cc9dc2ae1",
-    "url": "/PlanningPokerApp/index.html"
-  },
-  {
     "revision": "f9f35355a9e156d75856fe8b4a80e934",
     "url": "/PlanningPokerApp/manifest.json"
-  },
-  {
-    "revision": "9387266830fc56c269165c447df8a4dd",
-    "url": "/PlanningPokerApp/register-service-worker.js"
   }
 ];

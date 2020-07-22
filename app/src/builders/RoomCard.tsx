@@ -32,7 +32,7 @@ const createStyleSheet = (theme: Theme) =>
   StyleSheet.create({
     container: {
       paddingHorizontal: 8,
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors.primary,
       borderRadius: theme.roundness,
     },
     clipTextOverflow: { flexShrink: 1 },

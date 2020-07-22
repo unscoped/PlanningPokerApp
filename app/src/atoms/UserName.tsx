@@ -46,7 +46,7 @@ export const UpdatableUserName: React.FC<UpdatableUserNameProps> = ({
       <View style={{ flex: 1 }}>
         <TextInput
           ref={inlineInputRef}
-          style={{ paddingHorizontal: 4 }}
+          style={{ paddingHorizontal: 4, color: 'white' }}
           value={value}
           onChangeText={onChangeText}
           onSubmitEditing={toggleIsActive}
@@ -75,26 +75,26 @@ export const FixedUserName: React.FC<{ userName?: string }> = ({
 const createStyleSheet = (theme: Theme) =>
   StyleSheet.create({
     button: {
-      backgroundColor: theme.colors.surface,
+      backgroundColor: theme.colors.accent,
       borderRadius: theme.roundness,
       marginLeft: 8,
       paddingHorizontal: 8,
       paddingVertical: 4,
     },
     buttonText: {
-      color: theme.dark ? theme.colors.accent : theme.colors.primary,
+      color: 'white',
       fontWeight: '900',
     },
-    subtitle: { ...fontStyles.body1, color: theme.dark ? 'black' : 'white' },
+    subtitle: { ...fontStyles.body1, color: 'white' },
     updatableUserNameContainer: {
       alignItems: 'center',
-      backgroundColor: theme.dark ? theme.colors.accent : theme.colors.primary,
+      backgroundColor: theme.colors.primary,
       flexDirection: 'row',
       padding: 4,
     },
     userCardSubtitleContainer: {
       alignItems: 'center',
-      backgroundColor: theme.dark ? theme.colors.accent : theme.colors.primary,
+      backgroundColor: theme.colors.primary,
       flexShrink: 1,
       minHeight: 32,
       paddingHorizontal: 4,

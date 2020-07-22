@@ -1,6 +1,7 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Surface, Text, Theme } from 'react-native-paper';
+import { Surface, Text, Theme, useTheme } from 'react-native-paper';
 import { red100 } from 'react-native-paper/lib/typescript/src/styles/colors';
 
 import { VoteValue } from '../shared/model/User';
@@ -10,10 +11,15 @@ import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
 
 const AvatarWatermark: React.FC = () => {
+  const theme = useTheme();
   const styles = useStyleSheet(createStyleSheet);
   return (
     <View style={styles.avatarWatermark}>
-      <Text style={fontStyles.body2}>{'👤'}</Text>
+      <MaterialIcons
+        color={theme.colors.accent}
+        style={fontStyles.body2}
+        name={'person'}
+      />
     </View>
   );
 };
@@ -63,7 +69,7 @@ const createStyleSheet = (theme: Theme) =>
   StyleSheet.create({
     avatarDecoration: {
       borderWidth: 2,
-      borderColor: theme.dark ? theme.colors.accent : theme.colors.primary,
+      borderColor: theme.colors.primary,
     },
     avatarWatermark: {
       position: 'absolute',
@@ -71,7 +77,7 @@ const createStyleSheet = (theme: Theme) =>
       right: 4,
     },
     isExtreme: {
-      borderColor: 'red',
+      borderColor: theme.colors.accent,
     },
     resultCard: {
       borderRadius: theme.roundness * 2,

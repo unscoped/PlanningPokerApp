@@ -40,7 +40,7 @@ export const fontStyles = StyleSheet.create({
   headline3: {
     fontFamily: 'Poppins',
     fontSize: 48,
-    fontWeight: '400',
+    fontWeight: '700',
     letterSpacing: 0,
   },
   headline4: {

@@ -95,9 +95,7 @@ const createStyleSheet = (theme: Theme) =>
     },
     divider: {
       alignSelf: 'stretch',
-      borderBottomColor: theme.dark
-        ? theme.colors.accent
-        : theme.colors.primary,
+      borderBottomColor: theme.colors.primary,
       borderBottomWidth: 2,
     },
     fillWidth: { alignSelf: 'stretch' },

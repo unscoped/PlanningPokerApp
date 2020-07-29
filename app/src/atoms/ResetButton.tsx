@@ -11,17 +11,14 @@ export const ResetButton: React.FC<IProps> = ({ onPress }) => {
 
   const icon: IconSource = useCallback(
     (props) => (
-      <IconButton
-        {...props}
-        color={theme.dark ? 'white' : theme.colors.text}
-        icon="replay"
-      />
+      <IconButton {...props} color={theme.colors.text} icon="replay" />
     ),
-    [theme.colors.text, theme.dark],
+    [theme],
   );
 
   return (
     <Button
+      accessibilityRole={'button'}
       color={theme.colors.accent}
       icon={icon}
       mode="contained"

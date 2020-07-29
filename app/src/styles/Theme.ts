@@ -4,9 +4,10 @@ const light: Theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#808b97',
-    accent: '#78b7bb',
-    surface: '#fbfbfb',
+    accent: '#ef8354',
+    primary: '#eaeaeb',
+    surface: '#bfc0c0',
+    text: '#000000',
   },
 };
 
@@ -14,9 +15,10 @@ const dark: Theme = {
   ...DarkTheme,
   colors: {
     ...DarkTheme.colors,
-    primary: '#222831',
-    accent: '#ff5722',
-    surface: '#393e46',
+    accent: '#cd4b13',
+    primary: '#292d3d',
+    surface: '#323a49',
+    text: '#ffffff',
   },
 };
 

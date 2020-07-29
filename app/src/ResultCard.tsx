@@ -92,5 +92,4 @@ const createStyleSheet = (theme: Theme) =>
       flex: 1,
       justifyContent: 'center',
     },
-    subtitle: { ...fontStyles.body1, color: theme.dark ? 'black' : 'white' },
   });

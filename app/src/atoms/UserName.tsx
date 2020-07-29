@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
-import { Text, Theme } from 'react-native-paper';
+import { Text, Theme, useTheme } from 'react-native-paper';
 
 import { useStyleSheet } from '../hooks/Theme';
 import { fontStyles } from '../styles/Font';
@@ -14,6 +14,7 @@ export const UpdatableUserName: React.FC<UpdatableUserNameProps> = ({
   value,
   onChangeText,
 }) => {
+  const theme = useTheme();
   const styles = useStyleSheet(createStyleSheet);
   const [isActive, setIsActive] = useState<boolean>(false);
   const inlineInputRef = useRef<TextInput>(null);
@@ -46,7 +47,7 @@ export const UpdatableUserName: React.FC<UpdatableUserNameProps> = ({
       <View style={{ flex: 1 }}>
         <TextInput
           ref={inlineInputRef}
-          style={{ paddingHorizontal: 4, color: 'white' }}
+          style={{ paddingHorizontal: 4, color: theme.colors.text }}
           value={value}
           onChangeText={onChangeText}
           onSubmitEditing={toggleIsActive}
@@ -65,7 +66,7 @@ export const FixedUserName: React.FC<{ userName?: string }> = ({
   const styles = useStyleSheet(createStyleSheet);
   return (
     <View style={styles.userCardSubtitleContainer}>
-      <Text style={styles.subtitle} numberOfLines={1}>
+      <Text style={fontStyles.body1} numberOfLines={1}>
         {userName}
       </Text>
     </View>
@@ -82,10 +83,8 @@ const createStyleSheet = (theme: Theme) =>
       paddingVertical: 4,
     },
     buttonText: {
-      color: 'white',
       fontWeight: '900',
     },
-    subtitle: { ...fontStyles.body1, color: 'white' },
     updatableUserNameContainer: {
       alignItems: 'center',
       backgroundColor: theme.colors.primary,

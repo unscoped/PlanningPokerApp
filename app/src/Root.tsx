@@ -2,7 +2,7 @@ import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect } from 'react';
 import { AsyncStorage, StyleSheet, View } from 'react-native';
 import { Surface, Text, Theme } from 'react-native-paper';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { useMediaQuery } from 'react-responsive';
 
 import { Results } from './Results';
 import { useRoom } from './RoomHandler';
@@ -21,6 +21,9 @@ type Props = {
 
 export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const styles = useStyleSheet(createStyleSheet);
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-device-width: 1224px)',
+  });
 
   const {
     name,
@@ -50,7 +53,9 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
 
   return (
     <Surface style={styles.page}>
-      <Surface style={styles.canvas}>
+      <Surface
+        style={[styles.canvas, { width: isDesktopOrLaptop ? '90%' : '100%' }]}
+      >
         <View style={styles.head}>
           <Text style={fontStyles.headline3}>{'Planning Poker 🎲'}</Text>
           <View style={styles.switchWrapper}>
@@ -91,7 +96,6 @@ const createStyleSheet = (theme: Theme) =>
       height: '100%',
       paddingHorizontal: 16,
       paddingVertical: 16,
-      width: wp('90%'),
     },
     divider: {
       alignSelf: 'stretch',
@@ -109,7 +113,6 @@ const createStyleSheet = (theme: Theme) =>
       alignItems: 'center',
       backgroundColor: theme.colors.primary,
       flex: 1,
-      paddingBottom: 32,
     },
     switchWrapper: {
       flexDirection: 'column',

@@ -11,6 +11,7 @@
     "predeploy": "expo build:web"
   },
   "dependencies": {
+    "@expo/match-media": "^0.0.0-beta.2",
     "@use-expo/font": "^2.0.0",
     "expo": "^37.0.0",
     "expo-dark-mode-switch": "^0.0.1",
@@ -20,15 +21,16 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
     "react-native-appearance": "~0.3.1",
     "react-native-paper": "^3.6.0",
-    "react-native-responsive-screen": "^1.4.1",
     "react-native-screens": "~2.2.0",
     "react-native-svg": "11.0.1",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "react-responsive": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@types/react": "^16.9.11",
     "@types/react-native": "^0.60.22",
+    "@types/react-responsive": "^8.0.2",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/eslint-plugin-tslint": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",

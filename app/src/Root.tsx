@@ -118,13 +118,6 @@ const createStyleSheet = (theme: Theme) =>
       borderBottomColor: theme.colors.primary,
       borderBottomWidth: 2,
     },
-    fillWidth: { alignSelf: 'stretch' },
-    flexRow: { flex: 1, height: '100%' },
-    head: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      width: '100%',
-    },
     page: {
       alignItems: 'center',
       backgroundColor: theme.colors.primary,
@@ -138,11 +131,5 @@ const createStyleSheet = (theme: Theme) =>
       maxWidth: 375,
       paddingVertical: 8,
       width: '100%',
-    },
-    switchWrapper: {
-      flexDirection: 'column',
-      width: '100%',
-      alignItems: 'flex-end',
-      marginHorizontal: 16,
     },
   });

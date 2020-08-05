@@ -6,23 +6,10 @@ import { red100 } from 'react-native-paper/lib/typescript/src/styles/colors';
 
 import { VoteValue } from '../shared/model/User';
 
+import { AvatarWatermark } from './atoms/AvatarWatermark';
 import { FixedUserName, UpdatableUserName } from './atoms/UserName';
 import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
-
-const AvatarWatermark: React.FC = () => {
-  const theme = useTheme();
-  const styles = useStyleSheet(createStyleSheet);
-  return (
-    <View style={styles.avatarWatermark}>
-      <MaterialIcons
-        color={theme.colors.accent}
-        style={fontStyles.body2}
-        name={'person'}
-      />
-    </View>
-  );
-};
 
 type Props = {
   showAvatar: boolean;
@@ -70,11 +57,6 @@ const createStyleSheet = (theme: Theme) =>
     avatarDecoration: {
       borderWidth: 2,
       borderColor: theme.colors.primary,
-    },
-    avatarWatermark: {
-      position: 'absolute',
-      top: 4,
-      right: 4,
     },
     isExtreme: {
       borderColor: theme.colors.accent,

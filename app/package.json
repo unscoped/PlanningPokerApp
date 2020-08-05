@@ -13,8 +13,10 @@
   "dependencies": {
     "@expo/match-media": "^0.0.0-beta.2",
     "@use-expo/font": "^2.0.0",
+    "color": "^3.1.2",
     "expo": "^37.0.0",
     "expo-dark-mode-switch": "^0.0.1",
+    "expo-linear-gradient": "~8.1.0",
     "pure-uuid": "^1.6.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@types/color": "^3.0.1",
     "@types/react": "^16.9.11",
     "@types/react-native": "^0.60.22",
     "@types/react-responsive": "^8.0.2",

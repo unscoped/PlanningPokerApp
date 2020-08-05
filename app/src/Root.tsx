@@ -1,6 +1,6 @@
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect } from 'react';
-import { AsyncStorage, StyleSheet, View } from 'react-native';
+import { AsyncStorage, Clipboard, StyleSheet, View } from 'react-native';
 import { Surface, Text, Theme } from 'react-native-paper';
 import { useMediaQuery } from 'react-responsive';
 
@@ -8,9 +8,8 @@ import { Results } from './Results';
 import { useRoom } from './RoomHandler';
 import { VoteValues } from './VoteValues';
 import { ResetButton } from './atoms/ResetButton';
-import { FlexWrapRow } from './atoms/Row';
+import { ShareButton } from './atoms/ShareButton';
 import { Spacer } from './atoms/Spacer';
-import { RoomCard } from './builders/RoomCard';
 import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
 
@@ -21,9 +20,13 @@ type Props = {
 
 export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   const styles = useStyleSheet(createStyleSheet);
-  const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 1224px)',
+  const isTabletOrLaptop = useMediaQuery({
+    query: '(min-device-width: 600px)',
   });
+
+  const pageTitleStyle = isTabletOrLaptop
+    ? fontStyles.headline3
+    : fontStyles.headline4;
 
   const {
     name,
@@ -43,6 +46,11 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
     [setNameNotUse],
   );
 
+  const copyUrlToClipboard = useCallback(() => {
+    const roomLink = window.location.href;
+    Clipboard.setString(roomLink);
+  }, []);
+
   useEffect(() => {
     AsyncStorage.getItem('username').then((savedName) => {
       if (savedName) {
@@ -54,21 +62,19 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
   return (
     <Surface style={styles.page}>
       <Surface
-        style={[styles.canvas, { width: isDesktopOrLaptop ? '90%' : '100%' }]}
+        style={[styles.canvas, { width: isTabletOrLaptop ? '90%' : '100%' }]}
       >
         <View style={styles.head}>
-          <Text style={fontStyles.headline3}>{'Planning Poker 🎲'}</Text>
+          <Text style={pageTitleStyle}>{'Planning Poker 🎲'}</Text>
           <View style={styles.switchWrapper}>
             <Switch value={isDark} onChange={toggleTheme} />
           </View>
         </View>
+        <View style={styles.buttonRow}>
+          <ResetButton onPress={reset} />
+          <ShareButton onPress={copyUrlToClipboard} />
+        </View>
         <View style={styles.divider} />
-        <FlexWrapRow mode="space-evenly">
-          <View style={styles.flexRow}>
-            <RoomCard roomId={room.id} />
-          </View>
-        </FlexWrapRow>
-        <ResetButton onPress={reset} />
         <View>
           <Spacer />
           <VoteValues
@@ -91,6 +97,14 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
 
 const createStyleSheet = (theme: Theme) =>
   StyleSheet.create({
+    buttonRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      maxWidth: 320,
+      paddingHorizontal: 8,
+      paddingVertical: 12,
+      width: '100%',
+    },
     canvas: {
       alignItems: 'center',
       height: '100%',

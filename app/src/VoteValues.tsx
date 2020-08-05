@@ -1,7 +1,8 @@
+import Color from 'color';
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { useColorScheme } from 'react-native-appearance';
-import { Card, Text, Theme } from 'react-native-paper';
+import { Card, Text, Theme, useTheme } from 'react-native-paper';
 
 import { Colors } from '../ConfigConstants';
 import { VoteValue } from '../shared/model/User';
@@ -85,18 +86,29 @@ export const VoteValues: React.FC<ValuesProps> = ({
   selectedValue,
   isDark,
 }) => {
+  const theme = useTheme();
+
   return (
-    <FlexWrapRow mode="center">
-      {values.map((value) => (
-        <ValueCard
-          key={value}
-          value={value}
-          onPress={onValuePress}
-          isDark={isDark}
-          greyedOut={selectedValue !== undefined && selectedValue !== value}
-        />
-      ))}
-    </FlexWrapRow>
+    <View style={{ flex: 1 }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          // maxWidth: '66%',
+          flexWrap: 'wrap',
+        }}
+      >
+        {values.map((value) => (
+          <ValueCard
+            key={value}
+            value={value}
+            onPress={onValuePress}
+            isDark={isDark}
+            greyedOut={selectedValue !== undefined && selectedValue !== value}
+          />
+        ))}
+      </View>
+    </View>
   );
 };
 

@@ -1,13 +1,12 @@
 import Color from 'color';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useCallback } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { Card, Text, Theme, useTheme } from 'react-native-paper';
 
 import { Colors } from '../ConfigConstants';
 import { VoteValue } from '../shared/model/User';
 
-import { FlexWrapRow } from './atoms/Row';
 import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
 
@@ -27,20 +26,15 @@ export const ValueCard: React.FC<Props> = ({
   greyedOut,
 }) => {
   const styles = useStyleSheet(createStyleSheet);
+  const cardColorStyle: ViewStyle = {
+    backgroundColor: greyedOut
+      ? getColorForValue(-1, isDark)
+      : getColorForValue(value, isDark),
+  };
   const onCardPress = useCallback(() => onPress(value), [onPress, value]);
 
   return (
-    <Card
-      style={[
-        styles.valueContainer,
-        {
-          backgroundColor: greyedOut
-            ? getColorForValue(-1, isDark)
-            : getColorForValue(value, isDark),
-        },
-      ]}
-      onPress={onCardPress}
-    >
+    <Card style={[styles.valueContainer, cardColorStyle]} onPress={onCardPress}>
       <View style={styles.valueCard}>
         <Text style={[fontStyles.subtitle1, { fontWeight: '900' }]}>
           {value}
@@ -86,28 +80,19 @@ export const VoteValues: React.FC<ValuesProps> = ({
   selectedValue,
   isDark,
 }) => {
-  const theme = useTheme();
+  const styles = useStyleSheet(createStyleSheet);
 
   return (
-    <View style={{ flex: 1 }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          // maxWidth: '66%',
-          flexWrap: 'wrap',
-        }}
-      >
-        {values.map((value) => (
-          <ValueCard
-            key={value}
-            value={value}
-            onPress={onValuePress}
-            isDark={isDark}
-            greyedOut={selectedValue !== undefined && selectedValue !== value}
-          />
-        ))}
-      </View>
+    <View style={styles.container}>
+      {values.map((value) => (
+        <ValueCard
+          key={value}
+          value={value}
+          onPress={onValuePress}
+          isDark={isDark}
+          greyedOut={selectedValue !== undefined && selectedValue !== value}
+        />
+      ))}
     </View>
   );
 };
@@ -117,6 +102,8 @@ const createStyleSheet = (theme: Theme) =>
     container: {
       flexDirection: 'row',
       justifyContent: 'center',
+      flexWrap: 'wrap',
+      width: '100%',
     },
     valueCard: {
       alignItems: 'center',

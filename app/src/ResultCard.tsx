@@ -54,7 +54,7 @@ export const ResultCard: React.FC<Props> = ({
     >
       {showAvatar && <AvatarWatermark />}
       <View style={styles.resultCardTitleContainer}>
-        <Text style={fontStyles.headline3}>{displayValue}</Text>
+        <Text style={fontStyles.headline4}>{displayValue}</Text>
       </View>
       {showAvatar ? (
         <UpdatableUserName value={username} onChangeText={onUserNameChange} />
@@ -82,10 +82,10 @@ const createStyleSheet = (theme: Theme) =>
     resultCard: {
       borderRadius: theme.roundness * 2,
       elevation: 8,
-      height: 150,
+      height: 112,
       margin: 8,
       overflow: 'hidden',
-      width: 100,
+      width: 96,
     },
     resultCardTitleContainer: {
       alignItems: 'center',

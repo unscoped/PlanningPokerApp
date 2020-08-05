@@ -66,7 +66,7 @@ export const FixedUserName: React.FC<{ userName?: string }> = ({
   const styles = useStyleSheet(createStyleSheet);
   return (
     <View style={styles.userCardSubtitleContainer}>
-      <Text style={fontStyles.body1} numberOfLines={1}>
+      <Text style={fontStyles.body2} numberOfLines={1}>
         {userName}
       </Text>
     </View>

@@ -7,9 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Results } from './Results';
 import { useRoom } from './RoomHandler';
 import { VoteValues } from './VoteValues';
-import { ResetButton } from './atoms/ResetButton';
-import { ShareButton } from './atoms/ShareButton';
-import { Spacer } from './atoms/Spacer';
+import { IconTextButton } from './atoms/IconButton';
 import { useStyleSheet } from './hooks/Theme';
 import { fontStyles } from './styles/Font';
 
@@ -64,26 +62,31 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
       <Surface
         style={[styles.canvas, { width: isTabletOrLaptop ? '90%' : '100%' }]}
       >
-        <View style={styles.head}>
-          <Text style={pageTitleStyle}>{'Planning Poker 🎲'}</Text>
-          <View style={styles.switchWrapper}>
-            <Switch value={isDark} onChange={toggleTheme} />
-          </View>
-        </View>
-        <View style={styles.buttonRow}>
-          <ResetButton onPress={reset} />
-          <ShareButton onPress={copyUrlToClipboard} />
-        </View>
-        <View style={styles.divider} />
-        <View>
-          <Spacer />
-          <VoteValues
-            onValuePress={vote}
-            isDark={isDark}
-            selectedValue={voteValue}
+        <Text style={pageTitleStyle}>{'Planning Poker 🎲'}</Text>
+        <View style={styles.spacedRow}>
+          <IconTextButton
+            icon="share"
+            label="Share room"
+            mode="outlined"
+            onPress={copyUrlToClipboard}
           />
-          <Spacer />
+          <Switch value={isDark} onChange={toggleTheme} />
         </View>
+
+        <View style={styles.divider} />
+        <View style={styles.centerRow}>
+          <IconTextButton
+            icon="replay"
+            label="Reset"
+            mode="contained"
+            onPress={reset}
+          />
+        </View>
+        <VoteValues
+          onValuePress={vote}
+          isDark={isDark}
+          selectedValue={voteValue}
+        />
         <Results
           users={Object.values(room.users)}
           userId={userId}
@@ -97,19 +100,18 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
 
 const createStyleSheet = (theme: Theme) =>
   StyleSheet.create({
-    buttonRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      maxWidth: 320,
-      paddingHorizontal: 8,
-      paddingVertical: 12,
-      width: '100%',
-    },
     canvas: {
       alignItems: 'center',
       height: '100%',
       paddingHorizontal: 16,
       paddingVertical: 16,
+    },
+    centerRow: {
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingVertical: 8,
     },
     divider: {
       alignSelf: 'stretch',
@@ -128,9 +130,19 @@ const createStyleSheet = (theme: Theme) =>
       backgroundColor: theme.colors.primary,
       flex: 1,
     },
+    spacedRow: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      maxWidth: 375,
+      paddingVertical: 8,
+      width: '100%',
+    },
     switchWrapper: {
       flexDirection: 'column',
-      justifyContent: 'center',
+      width: '100%',
+      alignItems: 'flex-end',
       marginHorizontal: 16,
     },
   });

@@ -1,15 +1,12 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Surface, Text, Theme, useTheme } from 'react-native-paper';
-import { red100 } from 'react-native-paper/lib/typescript/src/styles/colors';
+import { Surface, Text, Theme } from 'react-native-paper';
 
-import { VoteValue } from '../shared/model/User';
-
-import { AvatarWatermark } from './atoms/AvatarWatermark';
-import { FixedUserName, UpdatableUserName } from './atoms/UserName';
-import { useStyleSheet } from './hooks/Theme';
-import { fontStyles } from './styles/Font';
+import { VoteValue } from '../../shared/model/User';
+import { AvatarWatermark } from '../atoms/AvatarWatermark';
+import { FixedUserName, UpdatableUserName } from '../atoms/UserName';
+import { useStyleSheet } from '../hooks/Theme';
+import { fontStyles } from '../styles/Font';
 
 type Props = {
   showAvatar: boolean;

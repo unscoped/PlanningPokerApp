@@ -8,9 +8,9 @@ import {
   ISetNameMessage,
   ISetVoteValueMessage,
   MessageType,
-} from '../shared/model/Message';
-import { Room } from '../shared/model/Room';
-import { VoteValue } from '../shared/model/User';
+} from '../../shared/model/Message';
+import { Room } from '../../shared/model/Room';
+import { VoteValue } from '../../shared/model/User';
 
 import { useUrlParam } from './UrlHandler';
 

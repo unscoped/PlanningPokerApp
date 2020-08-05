@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { User, VoteValue } from '../shared/model/User';
+import { User, VoteValue } from '../../shared/model/User';
+import { FlexWrapRow } from '../atoms/Row';
 
 import { ResultCard } from './ResultCard';
-import { FlexWrapRow } from './atoms/Row';
 
 type Props = {
   users: User[];

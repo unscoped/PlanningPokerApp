@@ -4,11 +4,11 @@ import { AsyncStorage, Clipboard, StyleSheet, View } from 'react-native';
 import { Surface, Text, Theme } from 'react-native-paper';
 import { useMediaQuery } from 'react-responsive';
 
-import { Results } from './Results';
-import { useRoom } from './RoomHandler';
-import { VoteValues } from './VoteValues';
 import { IconTextButton } from './atoms/IconButton';
+import { useRoom } from './hooks/Room';
 import { useStyleSheet } from './hooks/Theme';
+import { Results } from './molecules/Results';
+import { VoteValues } from './molecules/VoteValues';
 import { fontStyles } from './styles/Font';
 
 type Props = {

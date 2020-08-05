@@ -13,7 +13,6 @@
   "dependencies": {
     "@expo/match-media": "^0.0.0-beta.2",
     "@use-expo/font": "^2.0.0",
-    "color": "^3.1.2",
     "expo": "^37.0.0",
     "expo-dark-mode-switch": "^0.0.1",
     "expo-linear-gradient": "~8.1.0",

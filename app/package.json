@@ -8,10 +8,11 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "deploy": "gh-pages -d web-build",
-    "predeploy": "expo build:web"
+    "predeploy": "expo build:web --no-pwa"
   },
   "dependencies": {
     "@expo/match-media": "^0.0.0-beta.2",
+    "@expo/webpack-config": "^0.12.23",
     "@use-expo/font": "^2.0.0",
     "expo": "^37.0.0",
     "expo-dark-mode-switch": "^0.0.1",

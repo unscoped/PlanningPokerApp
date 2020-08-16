@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { StyleSheet, Text, View, ViewStyle } from 'react-native';
-import { Card } from 'react-native-paper';
+import { StyleSheet, View, ViewStyle } from 'react-native';
+import { Card, Text } from 'react-native-paper';
 import { Theme } from 'react-native-paper/lib/typescript/src/types';
 
 import { Colors } from '../../ConfigConstants';

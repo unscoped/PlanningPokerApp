@@ -60,20 +60,20 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/./fonts/SimpleLineIcons.ttf"
   },
   {
-    "revision": "f328c398676e066fb4e76f0c028592b4",
-    "url": "/PlanningPokerApp/expo-service-worker.js"
-  },
-  {
-    "revision": "3706d7f80147bd05bb723f43864000a2",
+    "revision": "318429f99a75be44c5cc9cda7209cd43",
     "url": "/PlanningPokerApp/index.html"
-  },
-  {
-    "revision": "13dcb5886b9525d8294a115e26cca705",
-    "url": "/PlanningPokerApp/register-service-worker.js"
   },
   {
     "revision": "ec543248d7b23864564429fc03837190",
     "url": "/PlanningPokerApp/serve.json"
+  },
+  {
+    "revision": "f328c398676e066fb4e76f0c028592b4",
+    "url": "/PlanningPokerApp/expo-service-worker.js"
+  },
+  {
+    "revision": "13dcb5886b9525d8294a115e26cca705",
+    "url": "/PlanningPokerApp/register-service-worker.js"
   },
   {
     "revision": "98b656bc8eac62b373424dee174313e8",

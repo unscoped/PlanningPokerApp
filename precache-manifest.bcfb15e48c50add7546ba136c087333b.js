@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/./fonts/Poppins-Regular.ttf"
   },
   {
-    "revision": "907cd86a856750eeff6de61cbe373ad7",
+    "revision": "26dd37e0557a0ccdb5c0a5a40c5d23af",
     "url": "/PlanningPokerApp/index.html"
   },
   {

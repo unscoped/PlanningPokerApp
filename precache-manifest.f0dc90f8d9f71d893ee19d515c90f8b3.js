@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/./fonts/SimpleLineIcons.ttf"
   },
   {
-    "revision": "318429f99a75be44c5cc9cda7209cd43",
+    "revision": "7fd33c775cdc9d1756a869fa6e6c6972",
     "url": "/PlanningPokerApp/index.html"
   },
   {

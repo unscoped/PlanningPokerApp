@@ -8,7 +8,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "deploy": "gh-pages -d web-build",
-    "predeploy": "expo build:web --no-pwa"
+    "predeploy": "expo build:web --no-pwa",
+    "netlify": "npx expo build:web"
   },
   "dependencies": {
     "@expo/match-media": "^0.0.0-beta.2",

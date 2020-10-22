@@ -44,7 +44,7 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v1.4.1
+/** @license React v1.5.0
  * use-subscription.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.

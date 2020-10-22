@@ -1,18 +1,18 @@
 self.__precacheManifest = [
   {
-    "revision": "5c30b924ae221c3dc43f",
-    "url": "/PlanningPokerApp/static/js/app.3bb50e5e.chunk.js"
+    "revision": "360cf9b3f2b8ab1deda6",
+    "url": "/PlanningPokerApp/static/js/app.636b6f6d.chunk.js"
   },
   {
     "revision": "87e532cc617c0ffed4ef",
     "url": "/PlanningPokerApp/static/js/runtime~app.08a53639.js"
   },
   {
-    "revision": "cbb09b3cd8ad84b7dcaf",
-    "url": "/PlanningPokerApp/static/js/2.fb9e1e8a.chunk.js"
+    "revision": "f220852b1acf41c55407",
+    "url": "/PlanningPokerApp/static/js/2.5597d3ab.chunk.js"
   },
   {
-    "revision": "5a293a273bee8d740a045d9922b9a9ae",
+    "revision": "3c851d60ad5ef3f2fe43ebd263490d78",
     "url": "/PlanningPokerApp/./fonts/MaterialCommunityIcons.ttf"
   },
   {
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/./fonts/Entypo.ttf"
   },
   {
-    "revision": "6beba7e6834963f7f171d3bdd075c915",
+    "revision": "ca9ce9ff0676a9b04ef0f8a3ad17dd08",
     "url": "/PlanningPokerApp/./fonts/Feather.ttf"
   },
   {
@@ -40,12 +40,16 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/./fonts/FontAwesome.ttf"
   },
   {
-    "revision": "c6aef942e3668158ec29d4adcb2e768f",
+    "revision": "c39278f7abfc798a241551194f55e29f",
     "url": "/PlanningPokerApp/./fonts/FontAwesome5_Brands.ttf"
   },
   {
-    "revision": "872545dde71de3842234bf6afe80c4cb",
+    "revision": "b70cea0339374107969eb53e5b1f603f",
     "url": "/PlanningPokerApp/./fonts/FontAwesome5_Solid.ttf"
+  },
+  {
+    "revision": "b49ae8ab2dbccb02c4d11caaacf09eab",
+    "url": "/PlanningPokerApp/./fonts/Fontisto.ttf"
   },
   {
     "revision": "e20945d7c929279ef7a6f1db184a4470",
@@ -60,24 +64,24 @@ self.__precacheManifest = [
     "url": "/PlanningPokerApp/./fonts/SimpleLineIcons.ttf"
   },
   {
-    "revision": "f328c398676e066fb4e76f0c028592b4",
-    "url": "/PlanningPokerApp/expo-service-worker.js"
-  },
-  {
-    "revision": "3706d7f80147bd05bb723f43864000a2",
+    "revision": "b184283f8c6cd95994677f19df6fdb6b",
     "url": "/PlanningPokerApp/index.html"
-  },
-  {
-    "revision": "13dcb5886b9525d8294a115e26cca705",
-    "url": "/PlanningPokerApp/register-service-worker.js"
   },
   {
     "revision": "ec543248d7b23864564429fc03837190",
     "url": "/PlanningPokerApp/serve.json"
   },
   {
-    "revision": "98b656bc8eac62b373424dee174313e8",
-    "url": "/PlanningPokerApp/static/js/2.fb9e1e8a.chunk.js.LICENSE.txt"
+    "revision": "2002987acac9deb6803ab4ba381226ba",
+    "url": "/PlanningPokerApp/expo-service-worker.js"
+  },
+  {
+    "revision": "13dcb5886b9525d8294a115e26cca705",
+    "url": "/PlanningPokerApp/register-service-worker.js"
+  },
+  {
+    "revision": "a6a57f79077bf5ffb1fa7393d66fc275",
+    "url": "/PlanningPokerApp/static/js/2.5597d3ab.chunk.js.LICENSE.txt"
   },
   {
     "revision": "9f352dbfac2e6f3d916b9cb5819441dc",

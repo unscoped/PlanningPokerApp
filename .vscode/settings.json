@@ -1,8 +1,10 @@
 {
-    "eslint.enable": true,
     "editor.formatOnSave": true,
     "eslint.format.enable": true,
     "eslint.run": "onType",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
     "eslint.workingDirectories": [
         "./app",
         "./server"

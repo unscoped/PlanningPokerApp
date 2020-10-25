@@ -4,8 +4,8 @@
     "app.js.map": "/PlanningPokerApp/static/js/app.636b6f6d.chunk.js.map",
     "runtime~app.js": "/PlanningPokerApp/static/js/runtime~app.08a53639.js",
     "runtime~app.js.map": "/PlanningPokerApp/static/js/runtime~app.08a53639.js.map",
-    "static/js/2.5597d3ab.chunk.js": "/PlanningPokerApp/static/js/2.5597d3ab.chunk.js",
-    "static/js/2.5597d3ab.chunk.js.map": "/PlanningPokerApp/static/js/2.5597d3ab.chunk.js.map",
+    "static/js/2.34935ac9.chunk.js": "/PlanningPokerApp/static/js/2.34935ac9.chunk.js",
+    "static/js/2.34935ac9.chunk.js.map": "/PlanningPokerApp/static/js/2.34935ac9.chunk.js.map",
     "fonts/AntDesign.ttf": "/PlanningPokerApp/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/PlanningPokerApp/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/PlanningPokerApp/./fonts/Feather.ttf",
@@ -24,11 +24,11 @@
     "favicon.ico": "/PlanningPokerApp/favicon.ico",
     "index.html": "/PlanningPokerApp/index.html",
     "serve.json": "/PlanningPokerApp/serve.json",
-    "static/js/2.5597d3ab.chunk.js.LICENSE.txt": "/PlanningPokerApp/static/js/2.5597d3ab.chunk.js.LICENSE.txt"
+    "static/js/2.34935ac9.chunk.js.LICENSE.txt": "/PlanningPokerApp/static/js/2.34935ac9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime~app.08a53639.js",
-    "static/js/2.5597d3ab.chunk.js",
+    "static/js/2.34935ac9.chunk.js",
     "static/js/app.636b6f6d.chunk.js"
   ]
 }

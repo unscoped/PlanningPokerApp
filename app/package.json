@@ -9,7 +9,9 @@
     "eject": "expo eject",
     "deploy": "gh-pages -d web-build",
     "predeploy": "expo build:web --no-pwa",
-    "netlify": "npx expo build:web"
+    "netlify": "npx expo build:web",
+    "lint": "eslint ./src --ext .ts,.tsx --max-warnings 0",
+    "format": "eslint ./src --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@expo/match-media": "^0.0.0-beta.2",

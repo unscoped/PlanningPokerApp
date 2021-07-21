@@ -151,7 +151,6 @@ export const useRoom = () => {
 
   const setName = useCallback(
     (name: string) => {
-      console.log('Setting new username: ', name);
       setUserName(name);
       const setNameRequest: ISetNameMessage = {
         type: MessageType.SetName,

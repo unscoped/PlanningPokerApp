@@ -1,8 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Clipboard from '@react-native-clipboard/clipboard';
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Clipboard from '@react-native-clipboard/clipboard';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Surface, Text } from 'react-native-paper';
 import { Theme } from 'react-native-paper/lib/typescript/types';
 import { useMediaQuery } from 'react-responsive';

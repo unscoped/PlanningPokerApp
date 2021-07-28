@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import UUID from 'pure-uuid';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Platform } from 'react-native';
@@ -152,7 +153,6 @@ export const useRoom = () => {
 
   const setName = useCallback(
     (name: string) => {
-      console.log('Setting new username: ', name);
       setUserName(name);
       const setNameRequest: ISetNameMessage = {
         type: MessageType.SetName,

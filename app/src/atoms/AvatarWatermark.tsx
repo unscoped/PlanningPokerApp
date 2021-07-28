@@ -1,7 +1,8 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Theme, useTheme } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
+import { Theme } from 'react-native-paper/lib/typescript/types';
 
 import { useStyleSheet } from '../hooks/Theme';
 import { fontStyles } from '../styles/Font';

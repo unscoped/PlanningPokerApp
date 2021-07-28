@@ -1,4 +1,5 @@
-import { DarkTheme, DefaultTheme, Theme } from 'react-native-paper';
+import { DarkTheme, DefaultTheme } from 'react-native-paper';
+import { Theme } from 'react-native-paper/lib/typescript/types';
 
 const light: Theme = {
   ...DefaultTheme,

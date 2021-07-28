@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
-import { Text, Theme, useTheme } from 'react-native-paper';
+import { Text, useTheme } from 'react-native-paper';
+import { Theme } from 'react-native-paper/lib/typescript/types';
 
 import { useStyleSheet } from '../hooks/Theme';
 import { fontStyles } from '../styles/Font';

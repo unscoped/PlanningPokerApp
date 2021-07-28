@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Theme } from 'react-native-paper';
+import { Theme } from 'react-native-paper/lib/typescript/types';
 
 import { VoteValue } from '../../shared/model/User';
 import { useStyleSheet } from '../hooks/Theme';

@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import UUID from 'pure-uuid';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Platform } from 'react-native';

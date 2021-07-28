@@ -7,9 +7,11 @@ interface IProps {
   label: string;
   mode?: 'text' | 'outlined' | 'contained' | undefined;
   onPress: () => void;
+  color?: string;
 }
 
 export const IconTextButton: React.FC<IProps> = ({
+  color,
   icon,
   label,
   mode,
@@ -33,12 +35,12 @@ export const IconTextButton: React.FC<IProps> = ({
     <Button
       style={{ marginHorizontal: 8 }}
       accessibilityRole={'button'}
-      color={theme.colors.accent}
+      color={color ?? theme.colors.accent}
       icon={renderIcon}
       mode={mode}
       onPress={onPress}
     >
-      <Text>{label}</Text>
+      <Text style={{ fontWeight: 'bold' }}>{label}</Text>
     </Button>
   );
 };

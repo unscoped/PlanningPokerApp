@@ -5,6 +5,7 @@ import { Platform } from 'react-native';
 import {
   IJoinRequestMessage,
   IResetMessage,
+  IRevealMessage,
   ISetNameMessage,
   ISetVoteValueMessage,
   MessageType,
@@ -189,9 +190,19 @@ export const useRoom = () => {
     send(ws, msg);
   }, [room.id, ws]);
 
+  const reveal = useCallback(() => {
+    // setVoteValue(undefined);
+    const msg: IRevealMessage = {
+      type: MessageType.Reveal,
+      roomId: room.id,
+    };
+    send(ws, msg);
+  }, [room.id, ws]);
+
   return {
     name: userName,
     reset,
+    reveal,
     room,
     setName,
     userId,

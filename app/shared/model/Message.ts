@@ -6,6 +6,7 @@ export type Message =
   | IJoinResponseMessage
   | ILeaveRequestMessage
   | IResetMessage
+  | IRevealMessage
   | IRoomUpdateMessage
   | ISetNameMessage
   | ISetVoteValueMessage;
@@ -15,6 +16,7 @@ export enum MessageType {
   JoinResponse = 'JoinResponse',
   LeaveRequest = 'LeaveRequest',
   Reset = 'Reset',
+  Reveal = 'Reveal',
   RoomUpdate = 'RoomUpdate',
   SetName = 'SetName',
   SetVoteValue = 'SetVoteValue',
@@ -67,5 +69,10 @@ export interface IRoomUpdateMessage {
 
 export interface IResetMessage {
   type: MessageType.Reset;
+  roomId: string;
+}
+
+export interface IRevealMessage {
+  type: MessageType.Reveal;
   roomId: string;
 }

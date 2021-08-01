@@ -29,7 +29,7 @@ const createEmptyRoom = (id: string): Room => ({
 });
 
 const send = (ws: WebSocket, msg: any) => {
-  if(ws.readyState === WebSocket.OPEN){
+  if (ws.readyState === WebSocket.OPEN) {
     ws.send(JSON.stringify(msg));
   }
 };
@@ -91,9 +91,9 @@ export const useRoom = () => {
         // eslint-disable-next-line no-console
         console.log('Opened WebSocket connection');
       }
-  
+
       const storedName = await AsyncStorage.getItem('username');
-  
+
       const joinRequest: IJoinRequestMessage = {
         type: MessageType.JoinRequest,
         roomId,
@@ -102,7 +102,7 @@ export const useRoom = () => {
         },
       };
       send(ws, joinRequest);
-    }
+    };
 
     joinRoom();
     // eslint-disable-next-line react-hooks/exhaustive-deps

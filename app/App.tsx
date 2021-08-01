@@ -1,7 +1,7 @@
-import { useFonts } from '@use-expo/font';
-import AppLoading  from 'expo-app-loading';
-import React, { useCallback, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFonts } from '@use-expo/font';
+import AppLoading from 'expo-app-loading';
+import React, { useCallback, useEffect, useState } from 'react';
 import { AppearanceProvider } from 'react-native-appearance';
 import { Provider as PaperProvider } from 'react-native-paper';
 

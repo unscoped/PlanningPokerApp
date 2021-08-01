@@ -33,6 +33,18 @@ const resetValuesInRoom = (room: Room): Room => ({
   ),
 });
 
+const revealValuesInRoom = (room: Room): Room => {
+  return {
+    ...room,
+    users: Object.fromEntries(
+      Object.entries(room.users).map(([key, user]) => [
+        key,
+        { ...user, voteValue: user.voteValue ?? 'hidden' },
+      ])
+    ),
+  };
+};
+
 const filterValuesFromRoom = (room: Room): Room => ({
   ...room,
   users: Object.fromEntries(
@@ -47,7 +59,7 @@ const updateRoom = (roomId: string) => {
   const room = rooms[roomId];
 
   const everyoneVoted = Object.values(room.users).every(
-    (user) => user.voteValue !== undefined && user.voteValue !== 'hidden'
+    (user) => user.voteValue !== undefined
   );
 
   const msg: IRoomUpdateMessage = {
@@ -134,6 +146,13 @@ wss.on('connection', (ws: WebSocket) => {
 
           break;
         }
+        case MessageType.Reveal: {
+          rooms[msg.roomId] = revealValuesInRoom(rooms[msg.roomId]);
+
+          updateRoom(msg.roomId);
+
+          break;
+        }
       }
     } catch (error) {
       console.error(error);
@@ -142,6 +161,22 @@ wss.on('connection', (ws: WebSocket) => {
     }
 
     ws.on('close', () => {
+      // Remove user from users list
+      delete users[userId];
+
+      // Remove user from all rooms and update these rooms
+      Object.keys(rooms).forEach((roomId) => {
+        if (rooms[roomId].users[userId]) {
+          delete rooms[roomId].users[userId];
+
+          updateRoom(roomId);
+        }
+      });
+    });
+
+    ws.on('error', (error) => {
+      console.error(error);
+
       // Remove user from users list
       delete users[userId];
 

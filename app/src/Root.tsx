@@ -3,9 +3,11 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Surface, Text } from 'react-native-paper';
+import { Surface, Text, useTheme } from 'react-native-paper';
 import { Theme } from 'react-native-paper/lib/typescript/types';
 import { useMediaQuery } from 'react-responsive';
+
+import { Colors } from '../ConfigConstants';
 
 import { IconTextButton } from './atoms/IconButton';
 import { useRoom } from './hooks/Room';
@@ -29,6 +31,8 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
     ? fontStyles.headline3
     : fontStyles.headline4;
 
+  const theme = useTheme();
+
   const {
     name,
     setName: setNameNotUse,
@@ -37,6 +41,7 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
     room,
     userId,
     reset,
+    reveal,
   } = useRoom();
 
   const setName = useCallback(
@@ -83,6 +88,13 @@ export const Root: React.FC<Props> = ({ isDark, toggleTheme }) => {
             label="Reset"
             mode="contained"
             onPress={reset}
+          />
+          <IconTextButton
+            icon="eye-check-outline"
+            label="Reveal"
+            mode="contained"
+            onPress={reveal}
+            color={theme.dark ? Colors.DarkZero : Colors.LightZero}
           />
         </View>
         <VoteValues

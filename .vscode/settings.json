@@ -1,12 +1,11 @@
 {
+    "typescript.tsdk": "node_modules/typescript/lib",
     "editor.formatOnSave": true,
-    "eslint.format.enable": true,
-    "eslint.run": "onType",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "eslint.workingDirectories": [
-        "./app",
-        "./server"
-    ],
+    "eslint.validate": ["typescript"],
+    "eslint.packageManager": "yarn",
+    "eslint.workingDirectories": [{ "mode": "auto" }],
 }

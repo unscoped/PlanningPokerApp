@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { useEffect, useState } from 'react';
 import { Appearance } from 'react-native-appearance';
-import { Theme, useTheme } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
+import { Theme } from 'react-native-paper/lib/typescript/types';
 
-export const useSystemDarkMode = () => {
+export const useSystemDarkMode = (): boolean => {
   const [isSystemDark, setSystemDark] = useState<boolean>(
     Appearance.getColorScheme() === 'dark',
   );

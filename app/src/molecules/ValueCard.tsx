@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { Card, Text } from 'react-native-paper';
-import { Theme } from 'react-native-paper/lib/typescript/src/types';
+import { Theme } from 'react-native-paper/lib/typescript/types';
 
 import { Colors } from '../../ConfigConstants';
 import { VoteValue } from '../../shared/model/User';

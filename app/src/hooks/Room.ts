@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import UUID from 'pure-uuid';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Platform } from 'react-native';
@@ -27,7 +28,9 @@ const createEmptyRoom = (id: string): Room => ({
 });
 
 const send = (ws: WebSocket, msg: any) => {
-  ws.send(JSON.stringify(msg));
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify(msg));
+  }
 };
 
 const onerror = (error: Event) => {
@@ -82,19 +85,25 @@ export const useRoom = () => {
   const [userId, setUserId] = useState<string>();
 
   const onopen = useCallback(() => {
-    if (__DEV__) {
-      // eslint-disable-next-line no-console
-      console.log('Opened WebSocket connection');
-    }
+    const joinRoom = async () => {
+      if (__DEV__) {
+        // eslint-disable-next-line no-console
+        console.log('Opened WebSocket connection');
+      }
 
-    const joinRequest: IJoinRequestMessage = {
-      type: MessageType.JoinRequest,
-      roomId,
-      payload: {
-        name: 'Guest',
-      },
+      const storedName = await AsyncStorage.getItem('username');
+
+      const joinRequest: IJoinRequestMessage = {
+        type: MessageType.JoinRequest,
+        roomId,
+        payload: {
+          name: storedName ?? 'Guest',
+        },
+      };
+      send(ws, joinRequest);
     };
-    send(ws, joinRequest);
+
+    joinRoom();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -151,7 +160,6 @@ export const useRoom = () => {
 
   const setName = useCallback(
     (name: string) => {
-      console.log('Setting new username: ', name);
       setUserName(name);
       const setNameRequest: ISetNameMessage = {
         type: MessageType.SetName,

@@ -1,7 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Clipboard from '@react-native-clipboard/clipboard';
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect } from 'react';
-import { AsyncStorage, Clipboard, StyleSheet, View } from 'react-native';
-import { Surface, Text, Theme } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+import { Surface, Text } from 'react-native-paper';
+import { Theme } from 'react-native-paper/lib/typescript/types';
 import { useMediaQuery } from 'react-responsive';
 
 import { IconTextButton } from './atoms/IconButton';

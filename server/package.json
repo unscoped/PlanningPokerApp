@@ -18,23 +18,23 @@
     "@types/ws": "^7.4.7",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "jest": "^27.0.6",
     "pure-uuid": "^1.6.2",
     "ts-jest": "^27.0.4",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5",
-    "ws": "^7.5.3"
+    "ws": "^7.5.6"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.3",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "nodemon": "^2.0.12",
+    "eslint-plugin-prettier": "^3.4.1",
+    "nodemon": "^2.0.15",
     "prettier": "^2.3.2",
-    "supertest": "^6.1.4"
+    "supertest": "^6.1.6"
   },
   "private": true
 }

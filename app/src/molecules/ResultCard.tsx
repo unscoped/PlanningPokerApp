@@ -27,7 +27,7 @@ export const ResultCard: React.FC<Props> = ({
   const styles = useStyleSheet(createStyleSheet);
 
   const displayValue =
-    resultValue && resultValue !== 'hidden' ? resultValue : '?';
+    resultValue !== undefined && resultValue !== 'hidden' ? resultValue : '?';
 
   return (
     <Surface

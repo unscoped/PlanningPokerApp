@@ -69,7 +69,18 @@ const useWebSocket = (
   return ws;
 };
 
-export const useRoom = () => {
+type RoomData = {
+  name: string;
+  reset: () => void;
+  reveal: () => void;
+  room: Room;
+  setName: (name: string) => void;
+  userId: string | undefined;
+  vote: (newVoteValue: VoteValue) => void;
+  voteValue: VoteValue;
+};
+
+export const useRoom = (): RoomData => {
   const rid = useUrlParam('roomId');
   const roomId = (() => {
     if (rid) {

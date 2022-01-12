@@ -1,4 +1,4 @@
-export type VoteValue = number | '🤔' | 'hidden' | undefined
+export type VoteValue = number | '🤔' | 'hidden' | undefined;
 
 export interface User {
   id: string;

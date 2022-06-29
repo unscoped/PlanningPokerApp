@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@types/color": "^3.0.2",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.67.6",
     "@types/react-responsive": "^8.0.3",

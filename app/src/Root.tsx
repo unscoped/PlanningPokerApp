@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Clipboard from '@react-native-clipboard/clipboard';
+import * as Clipboard from 'expo-clipboard';
 import Switch from 'expo-dark-mode-switch';
 import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';

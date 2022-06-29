@@ -17,6 +17,18 @@ type Props = {
   onUserNameChange: (text: string) => void;
 };
 
+const getDisplayValue = (resultValue: VoteValue) => {
+  switch (resultValue) {
+    case undefined:
+      return '?';
+    case 'hidden':
+      return '✓';
+
+    default:
+      return resultValue;
+  }
+};
+
 export const ResultCard: React.FC<Props> = ({
   onUserNameChange,
   resultValue,
@@ -26,8 +38,7 @@ export const ResultCard: React.FC<Props> = ({
 }) => {
   const styles = useStyleSheet(createStyleSheet);
 
-  const displayValue =
-    resultValue !== undefined && resultValue !== 'hidden' ? resultValue : '?';
+  const displayValue = getDisplayValue(resultValue);
 
   return (
     <Surface

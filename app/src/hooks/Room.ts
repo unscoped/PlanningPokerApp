@@ -44,7 +44,7 @@ const onerror = (error: Event) => {
 
 const useWebSocket = (
   onOpen: () => void,
-  onMessage: (event: WebSocketMessageEvent) => void,
+  onMessage: (event: MessageEvent) => void,
   onError: (error: Event) => void,
 ) => {
   const ws = useMemo(() => {
@@ -69,7 +69,18 @@ const useWebSocket = (
   return ws;
 };
 
-export const useRoom = () => {
+type RoomData = {
+  name: string;
+  reset: () => void;
+  reveal: () => void;
+  room: Room;
+  setName: (name: string) => void;
+  userId: string | undefined;
+  vote: (newVoteValue: VoteValue) => void;
+  voteValue: VoteValue;
+};
+
+export const useRoom = (): RoomData => {
   const rid = useUrlParam('roomId');
   const roomId = (() => {
     if (rid) {
@@ -109,7 +120,7 @@ export const useRoom = () => {
   }, []);
 
   const onmessage = useCallback(
-    (event: WebSocketMessageEvent) => {
+    (event: MessageEvent) => {
       if (event.data === 'Heartbeat') {
         // eslint-disable-next-line no-console
         console.log('Received heartbeat from server');

@@ -14,14 +14,15 @@
     "format": "eslint ./src --ext .ts,.tsx --fix"
   },
   "dependencies": {
+    "@expo-google-fonts/poppins": "^0.2.2",
     "@expo/match-media": "^0.1.0",
     "@expo/webpack-config": "~0.16.21",
     "@react-native-async-storage/async-storage": "~1.17.3",
-    "@use-expo/font": "^2.0.0",
     "expo": "^45.0.0",
     "expo-app-loading": "~2.0.0",
     "expo-clipboard": "~3.0.1",
     "expo-dark-mode-switch": "^0.0.1",
+    "expo-font": "~10.1.0",
     "expo-linear-gradient": "~11.3.0",
     "pure-uuid": "^1.6.2",
     "react": "17.0.2",

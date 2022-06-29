@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Appearance } from 'react-native-appearance';
+import { Appearance } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { Theme } from 'react-native-paper/lib/typescript/types';
 

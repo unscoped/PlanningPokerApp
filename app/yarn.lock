@@ -4563,11 +4563,6 @@ core-js-compat@^3.21.0, core-js-compat@^3.22.1:
     browserslist "^4.21.0"
     semver "7.0.0"
 
-core-js@^1.0.0:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
-  integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
-
 core-js@^2.4.1:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
@@ -6168,13 +6163,6 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-fbemitter@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/fbemitter/-/fbemitter-2.1.1.tgz#523e14fdaf5248805bb02f62efc33be703f51865"
-  integrity sha1-Uj4U/a9SSIBbsC9i78M75wP1GGU=
-  dependencies:
-    fbjs "^0.8.4"
-
 fbemitter@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/fbemitter/-/fbemitter-3.0.0.tgz#00b2a1af5411254aab416cd75f9e6289bee4bff3"
@@ -6194,19 +6182,6 @@ fbjs@1.0.0:
   dependencies:
     core-js "^2.4.1"
     fbjs-css-vars "^1.0.0"
-    isomorphic-fetch "^2.1.1"
-    loose-envify "^1.0.0"
-    object-assign "^4.1.0"
-    promise "^7.1.1"
-    setimmediate "^1.0.5"
-    ua-parser-js "^0.7.18"
-
-fbjs@^0.8.4:
-  version "0.8.17"
-  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
-  integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
-  dependencies:
-    core-js "^1.0.0"
     isomorphic-fetch "^2.1.1"
     loose-envify "^1.0.0"
     object-assign "^4.1.0"
@@ -10529,15 +10504,6 @@ react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-appearance@~0.3.3:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/react-native-appearance/-/react-native-appearance-0.3.4.tgz#2cbcbc5142cdc1898c116684f519b16c879cbec2"
-  integrity sha512-Vz3zdJbAEiMDwuw6wH98TT1WVfBvWjvANutYtkIbl16KGRCigtSgt6IIiLsF3/TSS3y3FtHhWDelFeGw/rtuig==
-  dependencies:
-    fbemitter "^2.1.1"
-    invariant "^2.2.4"
-    use-subscription "^1.0.0"
-
 react-native-codegen@^0.0.17:
   version "0.0.17"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.17.tgz#83fb814d94061cbd46667f510d2ddba35ffb50ac"
@@ -12568,13 +12534,6 @@ url@^0.11.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/use-subscription/-/use-subscription-1.5.1.tgz#73501107f02fad84c6dd57965beb0b75c68c42d1"
   integrity sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA==
-  dependencies:
-    object-assign "^4.1.1"
-
-use-subscription@^1.0.0:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/use-subscription/-/use-subscription-1.4.1.tgz#edcbcc220f1adb2dd4fa0b2f61b6cc308e620069"
-  integrity sha512-7+IIwDG/4JICrWHL/Q/ZPK5yozEnvRm6vHImu0LKwQlmWGKeiF7mbAenLlK/cTNXrTtXHU/SFASQHzB6+oSJMQ==
   dependencies:
     object-assign "^4.1.1"
 

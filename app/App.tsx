@@ -3,7 +3,6 @@ import { Poppins_400Regular, useFonts } from '@expo-google-fonts/poppins';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AppLoading from 'expo-app-loading';
 import React, { useCallback, useEffect, useState } from 'react';
-import { AppearanceProvider } from 'react-native-appearance';
 import { Provider as PaperProvider } from 'react-native-paper';
 
 import { Root } from './src/Root';
@@ -35,10 +34,8 @@ export default () => {
   }
 
   return (
-    <AppearanceProvider>
-      <PaperProvider theme={isDark ? Theme.dark : Theme.light}>
-        <Root isDark={isDark} toggleTheme={toggleTheme} />
-      </PaperProvider>
-    </AppearanceProvider>
+    <PaperProvider theme={isDark ? Theme.dark : Theme.light}>
+      <Root isDark={isDark} toggleTheme={toggleTheme} />
+    </PaperProvider>
   );
 };

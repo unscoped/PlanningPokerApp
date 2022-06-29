@@ -44,7 +44,7 @@ const onerror = (error: Event) => {
 
 const useWebSocket = (
   onOpen: () => void,
-  onMessage: (event: WebSocketMessageEvent) => void,
+  onMessage: (event: MessageEvent) => void,
   onError: (error: Event) => void,
 ) => {
   const ws = useMemo(() => {
@@ -120,7 +120,7 @@ export const useRoom = (): RoomData => {
   }, []);
 
   const onmessage = useCallback(
-    (event: WebSocketMessageEvent) => {
+    (event: MessageEvent) => {
       if (event.data === 'Heartbeat') {
         // eslint-disable-next-line no-console
         console.log('Received heartbeat from server');

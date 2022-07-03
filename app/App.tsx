@@ -1,8 +1,8 @@
+// eslint-disable-next-line camelcase
+import { Poppins_400Regular, useFonts } from '@expo-google-fonts/poppins';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useFonts } from '@use-expo/font';
 import AppLoading from 'expo-app-loading';
 import React, { useCallback, useEffect, useState } from 'react';
-import { AppearanceProvider } from 'react-native-appearance';
 import { Provider as PaperProvider } from 'react-native-paper';
 
 import { Root } from './src/Root';
@@ -14,7 +14,8 @@ export default () => {
   const [isDark, setIsDark] = useState(isSystemDark);
 
   const [fontsLoaded] = useFonts({
-    Poppins: require('./assets/fonts/Poppins-Regular.ttf'),
+    // eslint-disable-next-line camelcase
+    Poppins: Poppins_400Regular,
   });
 
   const toggleTheme = useCallback(() => {
@@ -33,10 +34,8 @@ export default () => {
   }
 
   return (
-    <AppearanceProvider>
-      <PaperProvider theme={isDark ? Theme.dark : Theme.light}>
-        <Root isDark={isDark} toggleTheme={toggleTheme} />
-      </PaperProvider>
-    </AppearanceProvider>
+    <PaperProvider theme={isDark ? Theme.dark : Theme.light}>
+      <Root isDark={isDark} toggleTheme={toggleTheme} />
+    </PaperProvider>
   );
 };

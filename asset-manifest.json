@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/static/js/app.a29d232f.chunk.js",
-    "app.js.map": "/static/js/app.a29d232f.chunk.js.map",
+    "app.js": "/static/js/app.a0c144d4.chunk.js",
+    "app.js.map": "/static/js/app.a0c144d4.chunk.js.map",
     "runtime~app.js": "/static/js/runtime~app.2e9f1821.js",
     "runtime~app.js.map": "/static/js/runtime~app.2e9f1821.js.map",
-    "static/js/2.b2dbd27e.chunk.js": "/static/js/2.b2dbd27e.chunk.js",
-    "static/js/2.b2dbd27e.chunk.js.map": "/static/js/2.b2dbd27e.chunk.js.map",
+    "static/js/2.3d415b6f.chunk.js": "/static/js/2.3d415b6f.chunk.js",
+    "static/js/2.3d415b6f.chunk.js.map": "/static/js/2.3d415b6f.chunk.js.map",
     "fonts/AntDesign.ttf": "/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/./fonts/Feather.ttf",
@@ -17,18 +17,35 @@
     "fonts/Ionicons.ttf": "/./fonts/Ionicons.ttf",
     "fonts/MaterialCommunityIcons.ttf": "/./fonts/MaterialCommunityIcons.ttf",
     "fonts/MaterialIcons.ttf": "/./fonts/MaterialIcons.ttf",
-    "fonts/Poppins-Regular.ttf": "/./fonts/Poppins-Regular.ttf",
+    "fonts/Poppins_100Thin.ttf": "/./fonts/Poppins_100Thin.ttf",
+    "fonts/Poppins_100Thin_Italic.ttf": "/./fonts/Poppins_100Thin_Italic.ttf",
+    "fonts/Poppins_200ExtraLight.ttf": "/./fonts/Poppins_200ExtraLight.ttf",
+    "fonts/Poppins_200ExtraLight_Italic.ttf": "/./fonts/Poppins_200ExtraLight_Italic.ttf",
+    "fonts/Poppins_300Light.ttf": "/./fonts/Poppins_300Light.ttf",
+    "fonts/Poppins_300Light_Italic.ttf": "/./fonts/Poppins_300Light_Italic.ttf",
+    "fonts/Poppins_400Regular.ttf": "/./fonts/Poppins_400Regular.ttf",
+    "fonts/Poppins_400Regular_Italic.ttf": "/./fonts/Poppins_400Regular_Italic.ttf",
+    "fonts/Poppins_500Medium.ttf": "/./fonts/Poppins_500Medium.ttf",
+    "fonts/Poppins_500Medium_Italic.ttf": "/./fonts/Poppins_500Medium_Italic.ttf",
+    "fonts/Poppins_600SemiBold.ttf": "/./fonts/Poppins_600SemiBold.ttf",
+    "fonts/Poppins_600SemiBold_Italic.ttf": "/./fonts/Poppins_600SemiBold_Italic.ttf",
+    "fonts/Poppins_700Bold.ttf": "/./fonts/Poppins_700Bold.ttf",
+    "fonts/Poppins_700Bold_Italic.ttf": "/./fonts/Poppins_700Bold_Italic.ttf",
+    "fonts/Poppins_800ExtraBold.ttf": "/./fonts/Poppins_800ExtraBold.ttf",
+    "fonts/Poppins_800ExtraBold_Italic.ttf": "/./fonts/Poppins_800ExtraBold_Italic.ttf",
+    "fonts/Poppins_900Black.ttf": "/./fonts/Poppins_900Black.ttf",
+    "fonts/Poppins_900Black_Italic.ttf": "/./fonts/Poppins_900Black_Italic.ttf",
     "fonts/SimpleLineIcons.ttf": "/./fonts/SimpleLineIcons.ttf",
     "favicon-16.png": "/favicon-16.png",
     "favicon-32.png": "/favicon-32.png",
     "favicon.ico": "/favicon.ico",
     "index.html": "/index.html",
     "serve.json": "/serve.json",
-    "static/js/2.b2dbd27e.chunk.js.LICENSE.txt": "/static/js/2.b2dbd27e.chunk.js.LICENSE.txt"
+    "static/js/2.3d415b6f.chunk.js.LICENSE.txt": "/static/js/2.3d415b6f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime~app.2e9f1821.js",
-    "static/js/2.b2dbd27e.chunk.js",
-    "static/js/app.a29d232f.chunk.js"
+    "static/js/2.3d415b6f.chunk.js",
+    "static/js/app.a0c144d4.chunk.js"
   ]
 }

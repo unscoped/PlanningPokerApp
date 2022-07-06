@@ -13,7 +13,7 @@ jobs:
 
       - uses: expo/expo-github-action@v5
         with:
-          expo-version: 3.x
+          expo-version: 5.x
 
       - name: Checkout 🛎️
         uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.

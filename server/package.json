@@ -18,7 +18,7 @@
     "@types/ws": "^7.4.7",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jest": "^27.0.6",
     "pure-uuid": "^1.6.2",
     "ts-jest": "^27.0.4",
